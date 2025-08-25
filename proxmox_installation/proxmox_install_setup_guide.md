@@ -21,7 +21,7 @@ This document outlines the exact steps I followed to install Proxmox VE, beginni
 6. Click **Start** and confirm when prompted.
 
 
-![Rufus Bootable USB Setup](./images/Rufus_Proxmox_flash_setup.png)
+![Rufus Bootable USB Setup](../images/Rufus_Proxmox_flash_setup.png)
 
 
 ---
