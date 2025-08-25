@@ -92,6 +92,7 @@ mount -a
 df -h /mnt/lxc-storage
 ```
 
+![Mount Persistence](../images/mount_persistence.png) 
 ---
 
 ## 🖥️ Step 5: Add the New Storage to Proxmox GUI
@@ -111,6 +112,7 @@ Then fill out the following:
 
 Click **Add**.
 
+![Directory Storage Creation](../images/add_storage_directory.png)
 ---
 
 ## ✅ Outcome
