@@ -89,5 +89,3 @@ You now have:
 - A dedicated **14 GB LXC storage volume**
 - **Mounted persistently** at `/mnt/lxc-storage`
 - **Available in the Proxmox GUI** for container creation
-
-You’re ready to download container templates or experiment with Alpine, Debian, Docker, and more — all safely within your new storage area.
