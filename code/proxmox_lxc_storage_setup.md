@@ -4,6 +4,34 @@ This section documents how I created a dedicated 14 GB logical volume for contai
 
 ---
 
+## 📊 Step 0: Check Available Storage in Your LVM Volume Group
+
+Before creating a new logical volume, check if you have free space available in your existing volume group (usually `pve`):
+
+```bash
+vgs
+```
+
+Example output:
+```
+VG   #PV #LV #SN Attr   VSize    VFree
+pve    1   3   0 wz--n- <237.47g  <16.00g
+```
+
+You can also run:
+
+```bash
+lvs
+```
+
+This shows how the space is currently allocated across logical volumes.
+Ex.
+![Available Space](images/check_available_space_4partition.png)
+
+> ✅ Look for the `VFree` column in `vgs` — if it shows at least 14G free, you're good to proceed with creating your storage volume.
+
+---
+
 ## 🧱 Step 1: Create a New Logical Volume (LV)
 
 Using 14 GB of free space in the existing `pve` Volume Group:
