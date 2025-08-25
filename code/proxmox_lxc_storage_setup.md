@@ -26,7 +26,8 @@ lvs
 
 This shows how the space is currently allocated across logical volumes.
 Ex.
-![Available Space](images/check_available_space_4partition.png)
+--
+![Space Available](images/VFree_space.png)
 
 > ✅ Look for the `VFree` column in `vgs` — if it shows at least 14G free, you're good to proceed with creating your storage volume.
 
