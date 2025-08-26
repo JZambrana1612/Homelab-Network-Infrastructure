@@ -27,13 +27,14 @@ Planned additions:
 
 ---
 
-## Chronological Setup Journey  
-
-1. **Router Replacement & Segmentation**  
-   - Replaced old router with **TP-Link Archer BE400**.  
-   - Segmented WiFi into two networks:  
-     - *Bear1*: 2.4 GHz for lower-bandwidth devices (phones, tablets).  
-     - *Bear2*: 5/6 GHz for high-bandwidth devices (gaming PC, PS5, streaming).  
+1. Router Replacement & Segmentation
+- Replaced old router with **TP-Link Archer BE400**.
+- Configured Wi-Fi with two active networks:
+  - **Bear**: Legacy 2.4 GHz / 5 GHz SSID for general-purpose and non–Wi-Fi 7 devices (phones, tablets, IoT, older laptops).
+  - **Bear_MLO**: Wi-Fi 7 Multi-Link Operation (5/6 GHz) SSID dedicated to high-bandwidth, latency-sensitive devices (gaming PC, PS5, streaming).
+- Security:
+  - **Bear_MLO** secured with WPA3-Personal for modern compatibility and performance.
+  - **Bear** retained for backward compatibility with devices that do not yet support WPA3 or Wi-Fi 7.
 
 2. **VPN & Security Hardening**  
    - Enabled VPN using the TP-Link Tether iOS app.  
@@ -49,7 +50,7 @@ Planned additions:
 4. **Proxmox Virtualization Setup**  
    - Repurposed **Dell OptiPlex Micro 7020** (BitLocker-locked originally).  
    - Flashed a 16GB USB with the latest Proxmox version using **Rufus**.  
-   - Booted via F12 menu and installed Proxmox VE.  
+   - Booted via F12 boot menu and installed Proxmox VE.  
    - Configured:  
      - Static IP address  
      - Correct gateway  
@@ -95,9 +96,22 @@ This homelab project supports my career development by helping me:
 ## Repository Structure  
 
 ```
-/docs        → Setup notes, diagrams, and lab journal
-/configs     → Example configuration files (sanitized for security)
-/README.md   → Project overview
+home-lab/
+│
+├── images/
+│   ├── Rufus_Proxmox_flash_Setup.png
+│   ├── VFree_space.png
+│   ├── add_storage_directory.png
+│   ├── mount_persistence.png
+│   └── tplink_dhcp_settings.png
+│
+├── proxmox_install_setup/
+│   ├── identify_dhcp_gateway.md
+│   ├── links.md
+│   ├── proxmox_install_setup_guide.md
+│   └── proxmox_lxc_storage_setup.md
+│
+├── README.md
 ```
 
 ---
@@ -129,36 +143,6 @@ This repository is for **educational and portfolio purposes only**. Sensitive in
 
 This file serves as a chronological log of detailed notes, observations, and lessons learned while building and expanding the homelab.  
 It complements the high-level **README.md** by capturing smaller updates, troubleshooting steps, and reflections along the way.
-
----
-
-## 2025-08-20  
-- Replaced router with **TP-Link Archer BE400**.  
-- Segmented WiFi into two networks (Bear1 = 2.4 GHz, Bear2 = 5/6 GHz).  
-
-## 2025-08-21  
-- Enabled VPN using TP-Link Tether app.  
-- Reviewed DHCP ranges for static IP planning.  
-
-## 2025-08-22  
-- Added **TP-Link TL-SG705** switch.  
-- Moved wired devices (TV, PS5, PC) from router to switch.  
-- Observed improvements in QoS and lower latency.  
-
-## 2025-08-24  
-- Flashed Proxmox ISO to USB with Rufus.  
-- Repurposed Dell OptiPlex Micro 7020 (BitLocker wiped).  
-
-## 2025-08-25  
-- Installed Proxmox VE.  
-- Set static IP, configured gateway, and added AdGuard DNS.  
-- Installed Linux utilities (`tree`) for navigation.  
-- Relocated device to main desk, planning future NAS and clustering.  
-
-## 2025-08-25 (later)  
-- Partitioned **14GB** as `lxc-storage (pve)`.  
-- Realized storage limitation prevents running most self-hosting apps.  
-- Decision: wait until NAS purchase to proceed further.  
 
 ---
 
