@@ -29,12 +29,9 @@ This guide documents how I located my home network's DHCP range and default gate
    - **Address Lease Time**:
    - **Default Gateway**
    - **Primary DNS**
-   - **Secondary DNS**
+   - **Secondary DNS** 
 
-🖼️ *Optional Screenshot Placeholder:*  
-```md
 ![TP-Link DHCP Settings](../images/tplink_dhcp_settings.png)
-```
 
 ---
 
