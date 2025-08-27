@@ -31,7 +31,7 @@ This guide documents how I located my home network's DHCP range and default gate
    - **Primary DNS**
    - **Secondary DNS** 
 
-![TP-Link DHCP Settings](../images/tplink_dhcp_settings.png)
+![TP-Link DHCP Settings](../images/proxmox/tplink_dhcp_settings.png)
 
 ---
 
