@@ -56,7 +56,7 @@ The OpenVPN server requires a certificate for encryption and authentication. Thi
 - Import the `.ovpn` file on your laptop or phone.  
 - Connect using your router’s credentials.  
 
-![OpenVPN Client Screenshot](image-placeholder-client)
+![OpenVPN Client](../images/openvpn_connect_startup.png) -> ![OpenVPN Client](../images/openvpn_startup2.png)
 
 ---
 
@@ -67,7 +67,11 @@ The OpenVPN server requires a certificate for encryption and authentication. Thi
   - You can reach LAN devices (Proxmox, NAS, etc.).  
   - Your browsing IP shows your home ISP if using full tunnel mode.  
 
-![Testing VPN Screenshot](image-placeholder-test)
+![Testing VPN](../images/openvpn_startup_connected.png) -> ![Lower Section](../images/openvpn_startup_connected2.png)
+--
+*You can also test the connection via *[Whatismyip](https://www.whatismyip.com/)**
+--
+![Connection Check](../images/openvpn_connection_check.png)
 
 ---
 
