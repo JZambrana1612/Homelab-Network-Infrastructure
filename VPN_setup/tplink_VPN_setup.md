@@ -47,7 +47,7 @@ The OpenVPN server requires a certificate for encryption and authentication. Thi
   - Encryption keys and certificates.  
   - Port and protocol information.  
 
-![Export Config Screenshot](image-placeholder-export-config)
+![Export Configuration](../images/vpn_export.png))
 
 ---
 
