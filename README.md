@@ -159,14 +159,17 @@ home-lab/
 ## Disclaimer  
 This repository is for **educational and portfolio purposes only**. Sensitive information (such as real IP addresses, authentication keys, and personal data) has been removed or sanitized.  
 
-# Lab Notes
-
-This file serves as a chronological log of detailed notes, observations, and lessons learned while building and expanding the homelab.  
-It complements the high-level **README.md** by capturing smaller updates, troubleshooting steps, and reflections along the way.
+# Lab Notes & Next Notes To Capture 
+- Adding a NAS device for extended storage.  
+- Setting up Home Assistant as first hosted service.
+  - Current storage amount is not sufficient for hosting virtual environment containers & capabilities
+- Exploring VLANs and firewall rule sets.
+  - Noticed on my current router, the firewall capabilities are very baseline and don't allow for much configuration
+  - Potential separate physical firewall may have to be considered
 
 ---
 
-## Next Notes To Capture  
+# Next Notes To Capture  
 - Adding a NAS device for extended storage.  
 - Setting up Home Assistant as first hosted service.  
 - Exploring VLANs and firewall rule sets.  
