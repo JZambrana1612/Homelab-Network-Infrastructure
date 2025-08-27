@@ -134,21 +134,25 @@ home-lab/
 
 ## Lab Journal (Changelog)  
 
-- **2025-08-20** – Replaced router with TP-Link Archer BE400, segmented networks (Bear1, Bear2).  
-- **2025-08-21** – Enabled VPN, reviewed DHCP ranges for static IP setup.  
-- **2025-08-22** – Added TL-SG705 switch, moved devices for QoS improvements.  
-- **2025-08-24** – Flashed USB with Proxmox, repurposed Dell OptiPlex, wiped BitLocker partitions.  
-- **2025-08-25** – Installed Proxmox, set static IP, added AdGuard DNS.  
-- **2025-08-25** – Installed Linux utilities (`tree`), relocated device to desk, began planning NAS and clustering.  
-- **2025-08-25** – Partitioned 14GB to `lxc-storage (pve)`; storage too limited for self-hosting apps, awaiting NAS.  
+- **2025-08-20** — Replaced router with TP-Link Archer BE400, segmented networks (Bear, Bear_MLO).  
+- **2025-08-21** — Enabled VPN, reviewed DHCP ranges for static IP setup.  
+- **2025-08-22** — Added TL-SG705 switch, moved devices for QoS improvements.  
+- **2025-08-24** — Flashed USB with Proxmox, repurposed Dell OptiPlex, wiped BitLocker partitions.  
+- **2025-08-25** — Installed Proxmox, set static IP, added AdGuard DNS.  
+- **2025-08-25** — Installed Linux utilities (`tree`), relocated device to desk, began planning NAS and clustering.  
+- **2025-08-25** — Partitioned 14GB to `lxc-storage (pve)`; storage too limited for self-hosting apps, awaiting NAS.  
+- **2025-08-26** — Configured OpenVPN server on Archer BE400. Generated certificate, set up TP-Link DDNS, exported client config, and confirmed remote VPN tunnel working.  
+- **2025-08-26** — Documented sanitized VPN screenshots and created dedicated `vpn_setup/` with links/resources.  
+- **2025-08-26** — Reviewed Archer firewall & security options (SPI, Access Control, IP & MAC Binding, Device Isolation). Decided to enable IP/MAC binding later for Proxmox/NAS.  
 
 ---
 
-## Tools & Resources  
+## Tools & Resources
 
 - **Proxmox VE** → virtualization platform  
 - **TP-Link Tether App (iOS)** → VPN setup & router management  
-- **ChatGPT (GPT-5.0)** → used for Linux learning, troubleshooting, and ensuring safe execution of commands  
+- **OpenVPN Connect** → client software for VPN testing  
+- **ChatGPT (GPT-5.0)** → used for Linux learning, troubleshooting, VPN setup documentation, and safe execution of commands  
 
 ---
 
