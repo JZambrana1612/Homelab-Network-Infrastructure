@@ -57,7 +57,7 @@ https://your-proxmox-ip-address:8006
 ```
 
 4. Log in using the credentials you set during installation.
-
+!(Log-In)[../images/proxmox_login.png]
 ---
 
 ## 📌 Optional Post-Install To-Do List
