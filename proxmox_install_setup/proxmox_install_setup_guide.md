@@ -74,6 +74,6 @@ https://your-proxmox-ip-address:8006
 ---
 
 🧠 You’re now ready to begin containerization, virtualization, or homelab exploration.
-![Home](../images/proxmox_homepage.png)
+![Home](../images/proxmox/proxmox_homepage.png)
 
 *This README is part of a larger documentation series for building a full Proxmox-powered homelab.*
