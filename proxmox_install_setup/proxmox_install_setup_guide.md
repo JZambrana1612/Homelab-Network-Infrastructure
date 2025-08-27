@@ -21,7 +21,7 @@ This document outlines the exact steps I followed to install Proxmox VE, beginni
 6. Click **Start** and confirm when prompted.
 
 
-![Rufus Bootable USB Setup](../images/Rufus_Proxmox_flash_setup.png)
+![Rufus Bootable USB Setup](../images/proxmox/Rufus_Proxmox_flash_setup.png)
 
 
 ---
@@ -57,7 +57,7 @@ https://your-proxmox-ip-address:8006
 ```
 
 4. Log in using the credentials you set during installation.
-![Log-In](../images/proxmox_login.png)
+![Log-In](../images/proxmox/proxmox_login.png)
 ---
 
 ## 📌 Optional Post-Install To-Do List
