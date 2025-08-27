@@ -27,7 +27,7 @@ lvs
 This shows how the space is currently allocated across logical volumes.
 Ex.
 --
-![Space Available](../images/VFree_space.png)
+![Space Available](../images/proxmox/VFree_space.png)
 
 
 > ✅ Look for the `VFree` column in `vgs` — if it shows at least 14G free, you're good to proceed with creating your storage volume.
@@ -92,7 +92,7 @@ mount -a
 df -h /mnt/lxc-storage
 ```
 
-![Mount Persistence](../images/mount_persistence.png) 
+![Mount Persistence](../images/proxmox/mount_persistence.png) 
 ---
 
 ## 🖥️ Step 5: Add the New Storage to Proxmox GUI
@@ -112,7 +112,7 @@ Then fill out the following:
 
 Click **Add**.
 
-![Directory Storage Creation](../images/add_storage_directory.png)
+![Directory Storage Creation](../images/proxmox/add_storage_directory.png)
 ---
 
 ## ✅ Outcome
