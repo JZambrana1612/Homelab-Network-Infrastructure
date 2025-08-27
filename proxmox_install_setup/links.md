@@ -1,5 +1,6 @@
 **Links for Proxmox VE Installation & Disk Partitioning**
 --
+Below are the links used during our process of creating a bootable USB drive, installing Proxmox VE, and performing disk partitioning.
 
 **Rufus (Portable) Link:** [rufus.ie/downloads](https://rufus.ie/en/)
 - Tool used to create a bootable USB drive from the Proxmox ISO (recommended for Windows).
