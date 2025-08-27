@@ -103,24 +103,23 @@ home-lab/
 │   └── vpn_links.md
 |
 ├── images/
-│   └──proxmox/
-│   |  ├──
-
-
-│   ├── DDNS_setup.png
-│   ├── Rufus_Proxmox_flash_Setup.png
-│   ├── VFree_space.png
-│   ├── add_storage_directory.png
-│   ├── enable_openvpn.png
-│   ├── mount_persistence.png
-│   ├── openvpn_connect_startup.png
-│   ├── openvpn_connection_check.png
-│   ├── openvpn_startup2.png
-│   ├──openvpn_startup_connected.png
-│   ├── proxmox_homepage.png
-│   ├── proxmox_login.png
-│   ├── tplink_dhcp_settings.png
-│   └── vpn_export.png
+│   └── proxmox/
+│   |   ├── Rufus_Proxmox_flash_setup.png
+│   |   ├── VFree_space.png
+│   |   ├── add_storage_directory.png
+│   |   ├── mount_persistence.png
+│   |   ├── proxmox_homepage.png
+│   |   ├── proxmox_login.png
+│   |   └── tplink_dhcp_settings.png
+│   └── vpn/
+│   |   ├──DDNS_setup.png
+│   |   ├── enable_openvpn.png
+│   |   ├── openvpn_connect_startup.png
+│   |   ├── openvpn_connection_check.png
+│   |   ├── openvpn_startup2.png
+│   |   ├── openvpn_startup_connected.png
+│   |   ├── openvpn_startup_connected2.png
+│   |   └── vpn_export.png
 │
 ├── proxmox_install_setup/
 │   ├── identify_dhcp_gateway.md
