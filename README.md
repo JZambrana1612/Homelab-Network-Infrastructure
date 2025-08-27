@@ -98,12 +98,25 @@ This homelab project supports my career development by helping me:
 ```
 home-lab/
 │
+├── VPN_setup/
+│   ├── tplink_VPN_setup.md
+│   └── vpn_links.md
+|
 ├── images/
+│   ├── DDBS_setup.png
 │   ├── Rufus_Proxmox_flash_Setup.png
 │   ├── VFree_space.png
 │   ├── add_storage_directory.png
+│   ├── enable_openvpn.png
 │   ├── mount_persistence.png
-│   └── tplink_dhcp_settings.png
+│   ├── openvpn_connect_startup.png
+│   ├── openvpn_connection_check.png
+│   ├── openvpn_startup2.png
+│   ├──openvpn_startup_connected.png
+│   ├── proxmox_homepage.png
+│   ├── proxmox_login.png
+│   ├── tplink_dhcp_settings.png
+│   └── vpn_export.png
 │
 ├── proxmox_install_setup/
 │   ├── identify_dhcp_gateway.md
