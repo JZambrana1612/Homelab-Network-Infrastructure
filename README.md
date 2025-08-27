@@ -103,7 +103,11 @@ home-lab/
 │   └── vpn_links.md
 |
 ├── images/
-│   ├── DDBS_setup.png
+│   └──proxmox/
+│   |  ├──
+
+
+│   ├── DDNS_setup.png
 │   ├── Rufus_Proxmox_flash_Setup.png
 │   ├── VFree_space.png
 │   ├── add_storage_directory.png
