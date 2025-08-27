@@ -13,7 +13,7 @@ Before enabling the VPN, set up DDNS so your exported configuration file referen
 - Register a hostname (e.g., `bearlab.tplinkdns.com`).  
 - Bind and activate it.  
 
-![DDNS Setup](../images/DDNS_setup.png)
+![DDNS Setup](../images/vpn/DDNS_setup.png)
 
 Once enabled, the router will automatically update TP-Link whenever your ISP changes your home IP.
 
@@ -36,7 +36,7 @@ The OpenVPN server requires a certificate for encryption and authentication. Thi
   - **VPN Subnet**: Default is `10.8.0.0/24` (can leave as is).  
   - **Client Access**: Choose between *Home Network Only* or *Home Network + Internet*.  
 
-![Enable OpenVPN](../images/enable_openvpn.png)
+![Enable OpenVPN](../images/vpn/enable_openvpn.png)
 
 ---
 
@@ -47,7 +47,7 @@ The OpenVPN server requires a certificate for encryption and authentication. Thi
   - Encryption keys and certificates.  
   - Port and protocol information.  
 
-![Export Configuration](../images/vpn_export.png))
+![Export Configuration](../images/vpn/vpn_export.png))
 
 ---
 
@@ -56,7 +56,7 @@ The OpenVPN server requires a certificate for encryption and authentication. Thi
 - Import the `.ovpn` file on your laptop or phone.  
 - Connect using your router’s credentials.  
 
-![OpenVPN Client](../images/openvpn_connect_startup.png) -> ![OpenVPN Client](../images/openvpn_startup2.png)
+![OpenVPN Client](../images/vpn/openvpn_connect_startup.png) -> ![OpenVPN Client](../images/vpn/openvpn_startup2.png)
 
 ---
 
@@ -67,11 +67,11 @@ The OpenVPN server requires a certificate for encryption and authentication. Thi
   - You can reach LAN devices (Proxmox, NAS, etc.).  
   - Your browsing IP shows your home ISP if using full tunnel mode.  
 
-![Testing VPN](../images/openvpn_startup_connected.png) -> ![Lower Section](../images/openvpn_startup_connected2.png)
+![Testing VPN](../images/vpn/openvpn_startup_connected.png) -> ![Lower Section](../images/vpn/openvpn_startup_connected2.png)
 --
 *You can also test the connection via *[Whatismyip](https://www.whatismyip.com/)**
 --
-![Connection Check](../images/openvpn_connection_check.png)
+![Connection Check](../images/vpn/openvpn_connection_check.png)
 
 ---
 
