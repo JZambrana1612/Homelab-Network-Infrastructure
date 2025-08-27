@@ -13,7 +13,7 @@ Before enabling the VPN, set up DDNS so your exported configuration file referen
 - Register a hostname (e.g., `bearlab.tplinkdns.com`).  
 - Bind and activate it.  
 
-![DDNS Setup Screenshot](image-placeholder-ddns)
+![DDNS Setup](../images/DDNS_setup.png)
 
 Once enabled, the router will automatically update TP-Link whenever your ISP changes your home IP.
 
@@ -24,10 +24,8 @@ The OpenVPN server requires a certificate for encryption and authentication. Thi
 
 - Navigate to **Advanced → VPN Server → OpenVPN**.  
 - In the **Certificate** section, click **Generate**.  
-- Wait for the process to complete (this may take a few minutes).  
-
-![Generate Certificate Screenshot](image-placeholder-certificate)
-
+- Wait for the process to complete (this may take a few minutes).
+- 
 ---
 
 ## 3. Enable the OpenVPN Server
@@ -38,7 +36,7 @@ The OpenVPN server requires a certificate for encryption and authentication. Thi
   - **VPN Subnet**: Default is `10.8.0.0/24` (can leave as is).  
   - **Client Access**: Choose between *Home Network Only* or *Home Network + Internet*.  
 
-![Enable OpenVPN Screenshot](image-placeholder-openvpn-enable)
+![Enable OpenVPN](../images/enable_openvpn.png)
 
 ---
 
