@@ -57,7 +57,7 @@ https://your-proxmox-ip-address:8006
 ```
 
 4. Log in using the credentials you set during installation.
-!(Log-In)[../images/proxmox_login.png]
+![Log-In](../images/proxmox_login.png)
 ---
 
 ## 📌 Optional Post-Install To-Do List
@@ -74,5 +74,6 @@ https://your-proxmox-ip-address:8006
 ---
 
 🧠 You’re now ready to begin containerization, virtualization, or homelab exploration.
+![Home](../images/proxmox_homepage.png)
 
 *This README is part of a larger documentation series for building a full Proxmox-powered homelab.*
