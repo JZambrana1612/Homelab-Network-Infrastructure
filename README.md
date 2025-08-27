@@ -28,18 +28,27 @@ Planned additions:
 ---
 
 1. Router Replacement & Segmentation
-- Replaced old router with **TP-Link Archer BE400**.
-- Configured Wi-Fi with two active networks:
-  - **Bear**: Legacy 2.4 GHz / 5 GHz SSID for general-purpose and non–Wi-Fi 7 devices (phones, tablets, IoT, older laptops).
-  - **Bear_MLO**: Wi-Fi 7 Multi-Link Operation (5/6 GHz) SSID dedicated to high-bandwidth, latency-sensitive devices (gaming PC, PS5, streaming).
-- Security:
-  - **Bear_MLO** secured with WPA3-Personal for modern compatibility and performance.
-  - **Bear** retained for backward compatibility with devices that do not yet support WPA3 or Wi-Fi 7.
+    - Replaced old router with **TP-Link Archer BE400**.  
+    - Configured Wi-Fi with two active networks:  
+      - **Bear**: Legacy 2.4 GHz / 5 GHz SSID for general-purpose and non–Wi-Fi 7 devices (phones, tablets, IoT, older laptops).  
+      - **Bear_MLO**: Wi-Fi 7 Multi-Link Operation (5/6 GHz) SSID dedicated to high-bandwidth, latency-sensitive devices (gaming PC, PS5, streaming).  
+    - Security:  
+      - **Bear_MLO** secured with WPA3-Personal for modern compatibility and performance.  
+      - **Bear** retained for backward compatibility with devices that do not yet support WPA3 or Wi-Fi 7.  
+    - Router firewall & security:  
+      - Enabled SPI Firewall for stateful packet inspection.  
+      - Disabled WAN ping responses to reduce external visibility.  
+      - Reviewed Access Control, ALG, and Device Isolation features.  
+      - Planned to enable **IP & MAC Binding** for Proxmox and NAS to prevent ARP spoofing (pending).
 
 2. **VPN & Security Hardening**  
-   - Enabled VPN using the TP-Link Tether iOS app.  
-   - Reviewed DHCP IP ranges and planned static IP assignments.  
-   - Prepared for Proxmox host static IP assignment.  
+    - Enabled OpenVPN server on TP-Link Archer BE400.  
+    - Generated VPN certificate and exported client configuration file.  
+    - Set up TP-Link DDNS for dynamic IP resolution.  
+    - Imported `.ovpn` profile into OpenVPN Connect client and confirmed remote tunnel connectivity.  
+    - Documented sanitized VPN screenshots and created dedicated `vpn_setup/` with supporting links.  
+    - Reviewed router firewall and security settings (SPI Firewall, Access Control, ALGs, Device Isolation).  
+    - Planned to enable IP & MAC Binding for Proxmox host and NAS to prevent ARP spoofing (pending).
 
 3. **Switch Deployment for QoS**  
    - Introduced a **TP-Link TL-SG705 unmanaged switch**.  
@@ -47,15 +56,18 @@ Planned additions:
    - Improved bandwidth allocation and reduced latency.  
    - Benefited from built-in loop prevention to avoid broadcast storms.  
 
-4. **Proxmox Virtualization Setup**  
-   - Repurposed **Dell OptiPlex Micro 7020** (BitLocker-locked originally).  
-   - Flashed a 16GB USB with the latest Proxmox version using **Rufus**.  
-   - Booted via F12 boot menu and installed Proxmox VE.  
-   - Configured:  
-     - Static IP address  
-     - Correct gateway  
-     - AdGuard DNS for ad blocking  
-   - Proxmox installer wiped BitLocker partitions and restructured disk for virtualization use.  
+4. **Proxmox Virtualization Setup**     
+   - Repurposed **Dell OptiPlex Micro 7020** (originally BitLocker-locked).  
+    - Flashed a 16GB USB with the latest Proxmox VE ISO using **Rufus**.  
+    - Booted via F12 boot menu and installed Proxmox VE.  
+    - Configured during installation:  
+        - Static IP address  
+        - Correct gateway  
+        - AdGuard DNS for ad blocking  
+    - Proxmox installer wiped BitLocker partitions and restructured disk for virtualization use.  
+    - Installed basic Linux utilities (e.g., `tree`) for navigation and system management.  
+    - Partitioned 14GB to `lxc-storage (pve)` for testing; determined storage is insufficient for self-hosting apps (awaiting NAS expansion).  
+    - Relocated device to primary desk setup with three-monitor configuration and began planning clustering/NAS integration.    
 
 5. **Linux Learning & Lab Growth**  
    - Installed updates and learned basic Linux navigation commands.  
@@ -168,9 +180,3 @@ This repository is for **educational and portfolio purposes only**. Sensitive in
   - Potential separate physical firewall may have to be considered
 
 ---
-
-# Next Notes To Capture  
-- Adding a NAS device for extended storage.  
-- Setting up Home Assistant as first hosted service.  
-- Exploring VLANs and firewall rule sets.  
-- Future honeypot deployment (planned on Azure for safety).  
