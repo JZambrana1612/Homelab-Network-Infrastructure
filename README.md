@@ -15,8 +15,8 @@ This lab supports my career development path as I prepare for the **CompTIA Netw
 
 ## Hardware  
 
-- **Dell OptiPlex Micro 7020 (Model D15U005)** → repurposed as Proxmox VE hypervisor  
-- **TP-Link Archer BE400 Router** with built-in firewall and network segmentation  
+- **Dell OptiPlex Micro 7020** → repurposed as Proxmox VE hypervisor  
+- **TP-Link Archer BE6500 Router** with built-in firewall and network segmentation  
 - **TP-Link TL-SG705 5-Port Gigabit Switch** for Ethernet connectivity & QoS management  
 - **Frontier FRX523 Fiber Optic Router (MoCA capable)** – planned repurposing for future lab use  
 - **16GB USB Drive** → flashed to install Proxmox  
@@ -28,7 +28,7 @@ Planned additions:
 ---
 
 1. Router Replacement & Segmentation
-    - Replaced old router with **TP-Link Archer BE400**.  
+    - Replaced old router with **TP-Link Archer BE6500**.  
     - Configured Wi-Fi with two active networks:  
       - **Bear**: Legacy 2.4 GHz / 5 GHz SSID for general-purpose and non–Wi-Fi 7 devices (phones, tablets, IoT, older laptops).  
       - **Bear_MLO**: Wi-Fi 7 Multi-Link Operation (5/6 GHz) SSID dedicated to high-bandwidth, latency-sensitive devices (gaming PC, PS5, streaming).  
@@ -42,7 +42,7 @@ Planned additions:
       - Planned to enable **IP & MAC Binding** for Proxmox and NAS to prevent ARP spoofing (pending).
 
 2. **VPN & Security Hardening**  
-    - Enabled OpenVPN server on TP-Link Archer BE400.  
+    - Enabled OpenVPN server on TP-Link Archer BE6500.  
     - Generated VPN certificate and exported client configuration file.  
     - Set up TP-Link DDNS for dynamic IP resolution.  
     - Imported `.ovpn` profile into OpenVPN Connect client and confirmed remote tunnel connectivity.  
@@ -146,7 +146,7 @@ home-lab/
 
 ## Lab Journal (Changelog)  
 
-- **2025-08-20** — Replaced router with TP-Link Archer BE400, segmented networks (Bear, Bear_MLO).  
+- **2025-08-20** — Replaced router with TP-Link Archer BE6500, segmented networks (Bear, Bear_MLO).  
 - **2025-08-21** — Enabled VPN, reviewed DHCP ranges for static IP setup.  
 - **2025-08-22** — Added TL-SG705 switch, moved devices for QoS improvements.  
 - **2025-08-24** — Flashed USB with Proxmox, repurposed Dell OptiPlex, wiped BitLocker partitions.  
