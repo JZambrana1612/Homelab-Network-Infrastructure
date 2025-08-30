@@ -31,17 +31,6 @@ This document captures the security hardening and wireless optimization applied 
 
 > _Add screenshot:_ `![AdGuard DoT](images/vpn/PLACEHOLDER-adguard-dot.png)`
 
-### Remote Management Disabled
-- **What**: WAN access to router UI (HTTPS/443) disabled.  
-- **Why**: Prevents exposure of admin panel to the internet. VPN + DDNS used instead for remote access.
-
-> _Add screenshot:_ `![Remote Management Disabled](images/vpn/PLACEHOLDER-remote-mgmt.png)`
-
-### EasyMesh Disabled
-- **Why**: Not required in a small apartment; reduces background overhead and avoids mesh misconfigurations.
-
-> _Add screenshot:_ `![EasyMesh Disabled](images/vpn/PLACEHOLDER-easymesh.png)`
-
 ---
 
 ## ⚡ Wireless Optimization
@@ -57,14 +46,10 @@ This document captures the security hardening and wireless optimization applied 
 - **DTIM Interval**: Left at **1** for better latency on real‑time apps.  
 - **Beacon/RTS/Other**: Kept at stable defaults per vendor guidance.
 
-> _Add screenshot:_ `![Advanced Wi‑Fi Features](images/vpn/PLACEHOLDER-advanced-features.png)`
-
 ### SSID Strategy
 - **SSID_MLO** → WPA3‑only, main SSID for modern devices.  
 - **SSID_NAME** → WPA2/WPA3 mixed, fallback for older clients.  
 - **Guest/IoT** → Deferred for now.
-
-> _Add screenshot:_ `![SSID Strategy](images/vpn/PLACEHOLDER-ssid-strategy.png)`
 
 ---
 
@@ -72,8 +57,6 @@ This document captures the security hardening and wireless optimization applied 
 
 ### Client Identification
 - **What**: Renamed known clients (PC, work PC, phone); monitored device list for unknowns (discarded transient “Android” blip).
-
-> _Add screenshot:_ `![Client List](images/vpn/PLACEHOLDER-client-list.png)`
 
 ### Future: IP & MAC Binding (ARP Binding)
 - **Goal**: Prevent LAN ARP spoofing by binding static IPs to MACs for critical hosts.  
@@ -103,8 +86,6 @@ This document captures the security hardening and wireless optimization applied 
 - **Epic Games**: TCP/UDP **80**, TCP **443**, UDP **3478–3479**  
 - *(Other launchers seldom need custom rules.)*
 
-> _Add screenshot later:_ `![NAT/UPnP](images/vpn/PLACEHOLDER-upnp.png)`
-
 ---
 
 ## 🚧 Future Considerations
@@ -132,7 +113,4 @@ This document captures the security hardening and wireless optimization applied 
 ## 📌 Repository Linkback (add to README)
 Add this line in your root `README.md` under a “Home Network Security” section:
 
-```markdown
-Security hardening applied to the TP‑Link Archer BE6500 (WPA3, DoT with AdGuard, disabled risky defaults, channel/feature optimization).  
-[View full security & optimization notes →](router_security.md)
-```
+-
