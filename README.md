@@ -30,11 +30,11 @@ Planned additions:
 1. Router Replacement & Segmentation
     - Replaced old router with **TP-Link Archer BE6500**.  
     - Configured Wi-Fi with two active networks:  
-      - **Bear**: Legacy 2.4 GHz / 5 GHz SSID for general-purpose and non–Wi-Fi 7 devices (phones, tablets, IoT, older laptops).  
-      - **Bear_MLO**: Wi-Fi 7 Multi-Link Operation (5/6 GHz) SSID dedicated to high-bandwidth, latency-sensitive devices (gaming PC, PS5, streaming).  
+      - **SSID_NAME**: Legacy 2.4 GHz / 5 GHz SSID for general-purpose and non–Wi-Fi 7 devices (phones, tablets, IoT, older laptops).  
+      - **SSID_MLO**: Wi-Fi 7 Multi-Link Operation (5/6 GHz) SSID dedicated to high-bandwidth, latency-sensitive devices (gaming PC, PS5, streaming).  
     - Security:  
-      - **Bear_MLO** secured with WPA3-Personal for modern compatibility and performance.  
-      - **Bear** retained for backward compatibility with devices that do not yet support WPA3 or Wi-Fi 7.  
+      - **SSID_MLO** secured with WPA3-Personal for modern compatibility and performance.  
+      - **SSID_NAME** retained for backward compatibility with devices that do not yet support WPA3 or Wi-Fi 7.  
     - Router firewall & security:  
       - Enabled SPI Firewall for stateful packet inspection.  
       - Disabled WAN ping responses to reduce external visibility.  
@@ -146,7 +146,7 @@ home-lab/
 
 ## Lab Journal (Changelog)  
 
-- **2025-08-20** — Replaced router with TP-Link Archer BE6500, segmented networks (Bear, Bear_MLO).  
+- **2025-08-20** — Replaced router with TP-Link Archer BE6500, segmented networks (SSID_NAME, SSID_MLO).  
 - **2025-08-21** — Enabled VPN, reviewed DHCP ranges for static IP setup.  
 - **2025-08-22** — Added TL-SG705 switch, moved devices for QoS improvements.  
 - **2025-08-24** — Flashed USB with Proxmox, repurposed Dell OptiPlex, wiped BitLocker partitions.  
