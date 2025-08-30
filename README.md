@@ -129,6 +129,13 @@ home-lab/
 │   |   ├── proxmox_homepage.png
 │   |   ├── proxmox_login.png
 │   |   └── tplink_dhcp_settings.png
+│   |
+│   └── router/
+│   |   ├── MLO_settings.png
+│   |   ├── dot_doh_settings.png
+│   |   ├── group_key_settings.png
+│   |   └── wireless_settings.png
+│   |
 │   └── vpn/
 │   |   ├──DDNS_setup.png
 │   |   ├── enable_openvpn.png
@@ -144,6 +151,8 @@ home-lab/
 │   ├── links.md
 │   ├── proxmox_install_setup_guide.md
 │   └── proxmox_lxc_storage_setup.md
+│
+├── router_security.md
 │
 ├── README.md
 ```
