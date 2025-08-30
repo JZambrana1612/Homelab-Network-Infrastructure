@@ -2,8 +2,6 @@
 
 This document captures the security hardening and wireless optimization applied to the TP‑Link Archer BE6500 (Wi‑Fi 7) after upgrading to Frontier Fiber 1 Gbps. It complements the VPN and Proxmox setup guides in this repository.
 
-> _Screenshots will be added later. Use the placeholders below to drop images into the correct spots._
-
 ---
 
 ## ✅ Security Hardening
@@ -13,23 +11,19 @@ This document captures the security hardening and wireless optimization applied 
 - **SSID_NAME**: WPA2/WPA3 mixed mode (legacy compatibility).  
 - **Why**: Ensures modern clients prefer WPA3 while older devices can still connect.
 
-> _Add screenshot:_ `![Wireless Settings](images/router/wireless_settings.png)`
-
 ### WPS Disabled
 - **Why**: Removes a well‑known brute‑force attack vector (PIN method).
-
-> _Add screenshot:_ `![WPS Disabled](images/vpn/PLACEHOLDER-wps-disabled.png)`
 
 ### Group Key Update Period → 3600s
 - **Why**: Forces hourly re‑keying to limit risks from long‑term key reuse/replay.
 
-> _Add screenshot:_ `![Group Key Rotation](images/vpn/PLACEHOLDER-group-key-rotation.png)`
+![Group Key Rotation](images/router/group_key_settings.png)
 
 ### DNS over TLS (DoT) with AdGuard DNS
 - **What**: Encrypted DNS lookups and filtering for ads, trackers, malicious domains.  
 - **Why**: Improves privacy and reduces junk traffic at the network edge.
 
-> _Add screenshot:_ `![AdGuard DoT](images/vpn/PLACEHOLDER-adguard-dot.png)`
+![DoT](images/router/dot_doh_settings.png)
 
 ---
 
@@ -39,7 +33,7 @@ This document captures the security hardening and wireless optimization applied 
 - **2.4 GHz**: Locked to **Channel 6**, **20 MHz** width for stability in congested bands.  
 - **5 GHz**: **Auto channel** with **DFS enabled** for higher throughput and less congestion.
 
-> _Add screenshot:_ `![Channel Config](images/vpn/PLACEHOLDER-channel-config.png)`
+![Wireless](images/router/wireless_settings.png) ![MLO](images/router/MLO_settings.png)
 
 ### Advanced Wireless Features
 - **Airtime Fairness**, **MU‑MIMO**, and **OFDMA**: **Enabled** for efficient multi‑client performance (Wi‑Fi 6/7).  
@@ -65,8 +59,6 @@ This document captures the security hardening and wireless optimization applied 
   - NAS (when added)  
   - Main PC  
   - *(Optional)* PS5 & phone
-
-> _Add screenshot later:_ `![IP & MAC Binding](images/vpn/PLACEHOLDER-arp-binding.png)`
 
 ### Access Control
 - **Current**: Disabled (monitor‑only posture).  
@@ -109,8 +101,3 @@ This document captures the security hardening and wireless optimization applied 
 - Staged next steps: **IP/MAC binding**, VLANs, and a **dedicated firewall**.
 
 ---
-
-## 📌 Repository Linkback (add to README)
-Add this line in your root `README.md` under a “Home Network Security” section:
-
--
