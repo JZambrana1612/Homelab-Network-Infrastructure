@@ -10,7 +10,7 @@ Before enabling the VPN, set up DDNS so your exported configuration file referen
 - Navigate to **Advanced → Network → Dynamic DNS**.  
 - Choose **TP-Link DDNS** (free option).  
 - Log in with your TP-Link ID.  
-- Register a hostname (e.g., `bearlab.tplinkdns.com`).  
+- Register a hostname (e.g., `homelab.tplinkdns.com`).  
 - Bind and activate it.  
 
 ![DDNS Setup](../images/vpn/DDNS_setup.png)
