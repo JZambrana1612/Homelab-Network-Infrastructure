@@ -83,6 +83,12 @@ Planned additions:
 
 ---
 
+## Home Network & Security
+
+Security hardening applied to the TP‑Link Archer BE6500 (WPA3, DoT with AdGuard, disabled risky defaults, channel/feature optimization).  
+[View full security & optimization notes →](router_security.md)
+
+---
 ## Future Plans  
 
 - Deploy **NAS** for backups and centralized storage.  
