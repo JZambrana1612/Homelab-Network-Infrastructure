@@ -9,11 +9,11 @@ This document captures the security hardening and wireless optimization applied 
 ## ✅ Security Hardening
 
 ### Wi‑Fi Encryption
-- **Bear_MLO**: WPA3‑Personal (primary network for modern devices).  
-- **Bear**: WPA2/WPA3 mixed mode (legacy compatibility).  
+- **SSID_MLO**: WPA3‑Personal (primary network for modern devices).  
+- **SSID_NAME**: WPA2/WPA3 mixed mode (legacy compatibility).  
 - **Why**: Ensures modern clients prefer WPA3 while older devices can still connect.
 
-> _Add screenshot:_ `![WPA3 & Mixed Mode](images/vpn/PLACEHOLDER-wpa-mode.png)`
+> _Add screenshot:_ `![Wireless Settings](images/router/wireless_settings.png)`
 
 ### WPS Disabled
 - **Why**: Removes a well‑known brute‑force attack vector (PIN method).
@@ -60,8 +60,8 @@ This document captures the security hardening and wireless optimization applied 
 > _Add screenshot:_ `![Advanced Wi‑Fi Features](images/vpn/PLACEHOLDER-advanced-features.png)`
 
 ### SSID Strategy
-- **Bear_MLO** → WPA3‑only, main SSID for modern devices.  
-- **Bear** → WPA2/WPA3 mixed, fallback for older clients.  
+- **SSID_MLO** → WPA3‑only, main SSID for modern devices.  
+- **SSID_NAME** → WPA2/WPA3 mixed, fallback for older clients.  
 - **Guest/IoT** → Deferred for now.
 
 > _Add screenshot:_ `![SSID Strategy](images/vpn/PLACEHOLDER-ssid-strategy.png)`
