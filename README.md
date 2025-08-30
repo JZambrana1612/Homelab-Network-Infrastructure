@@ -3,7 +3,7 @@
 ## Overview  
 This repository documents the setup and ongoing development of my personal homelab environment. The purpose of this project is to gain hands-on experience with IT networking, virtualization, and cybersecurity concepts while building a professional portfolio that demonstrates applied skills.  
 
-This lab supports my career development path as I prepare for the **CompTIA Network+ certification** and pursue longer-term goals in **cybersecurity with a focus on gov-tech roles**. It also serves as a sandbox for experimenting with:  
+This lab supports my career development path as I prepare for the **CompTIA Network+ certification** and pursue longer-term goals in **networking & cybersecurity**. It also serves as a sandbox for experimenting with:  
 - Virtualization & hypervisors (Proxmox VE)  
 - Network segmentation & firewall management  
 - DNS filtering & ad blocking (AdGuard)  
