@@ -1,6 +1,6 @@
 # VPN Setup with OpenVPN on TP-Link Archer BE400
 
-This section documents the process of setting up a secure VPN for remote access to the homelab environment using the built-in OpenVPN server on the TP-Link Archer BE400 router.  
+This section documents the process of setting up a secure VPN for remote access to the homelab environment using the built-in OpenVPN server on the TP-Link Archer BE6500 router.  
 
 ---
 
