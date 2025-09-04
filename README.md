@@ -79,18 +79,18 @@ The diagram above represents the logical design of the homelab, including VLAN g
 
 ## 📓 Lab Journal (Changelog)
 
-- **2025-08-20** — Replaced router with TP-Link Archer BE6500, segmented SSIDs (SSID_NAME, SSID_MLO).  
-- **2025-08-21** — Reviewed DHCP ranges for static IP assignment.  
-- **2025-08-22** — Added TL-SG705 switch, moved devices for QoS improvements.  
-- **2025-08-29** — **Upgraded switch to TP-Link TL-SG1024DE Easy Smart Switch**, enabling VLAN support and more accurate homelab representation.  
-- **2025-08-24** — Flashed USB with Proxmox VE, repurposed Dell OptiPlex, wiped BitLocker partitions.  
-- **2025-08-25** — Installed Proxmox, set static IP, configured AdGuard DNS.  
-- **2025-08-25** — Installed Linux utilities (`tree`), relocated device to desk, began planning NAS and clustering.  
-- **2025-08-25** — Partitioned 14GB for `lxc-storage (pve)`; determined insufficient for self-hosting apps (NAS planned).  
-- **2025-08-26** — Configured OpenVPN server on Archer BE6500. Generated certificate, set up TP-Link DDNS, exported client config, and confirmed remote VPN tunnel working.  
-- **2025-08-26** — Documented VPN screenshots and created dedicated `vpn_setup/` folder with guides and links.  
-- **2025-08-26** — Reviewed Archer firewall/security (SPI, Access Control, IP/MAC binding, Device Isolation). Planned future IP/MAC binding for Proxmox/NAS.  
-- **2025-08-29** — ISP upgraded from Spectrum 500 Mbps to Frontier Fiber 1 Gbps symmetric. Enabled testing of VPN in full-tunnel mode and improved latency for Wi-Fi 7 segmentation.  
+- 2025-08-20 — Replaced router with TP-Link Archer BE6500, segmented SSIDs (SSID_NAME, SSID_MLO).
+- 2025-08-21 — Reviewed DHCP ranges for static IP assignment.
+- 2025-08-22 — Added TL-SG705 switch, moved devices for QoS improvements.
+- 2025-08-24 — Flashed USB with Proxmox VE, repurposed Dell OptiPlex, wiped BitLocker partitions.
+- 2025-08-25 — Installed Proxmox, set static IP, configured AdGuard DNS.
+- 2025-08-25 — Installed Linux utilities (tree), relocated device to desk, began planning NAS and clustering.
+- 2025-08-25 — Partitioned 14GB for lxc-storage (pve); determined insufficient for self-hosting apps (NAS planned).
+- 2025-08-26 — Configured OpenVPN server on Archer BE6500. Generated certificate, set up TP-Link DDNS, exported client config, and confirmed remote VPN tunnel working.
+- 2025-08-26 — Documented VPN screenshots and created dedicated vpn_setup/ folder with guides and links.
+- 2025-08-26 — Reviewed Archer firewall/security (SPI, Access Control, IP/MAC binding, Device Isolation). Planned future IP/MAC binding for Proxmox/NAS.
+- 2025-08-29 — ISP upgraded from Spectrum 500 Mbps to Frontier Fiber 1 Gbps symmetric. Enabled testing of VPN in full-tunnel mode and improved latency for Wi-Fi 7 segmentation.
+- 2025-09-04 — Upgraded switch to TP-Link TL-SG1024DE Easy Smart Switch, replacing TL-SG705. Configured VLAN segmentation (Mgmt, Servers, Media, IoT, High-Perf Wi-Fi) and finalized logical network topology diagram for portfolio documentation. 
 
 ---
 
