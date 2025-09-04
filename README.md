@@ -1,4 +1,4 @@
-# 🏡 Home-Lab Project
+# 🏡 Home-Lab Network Infrastructure Project
 
 This repository documents the setup and ongoing development of my personal homelab environment. The purpose of this project is to gain hands-on experience with IT networking, virtualization, and cybersecurity concepts while building a professional portfolio that demonstrates applied skills.  
 
