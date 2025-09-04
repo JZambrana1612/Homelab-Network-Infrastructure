@@ -2,7 +2,15 @@
 
 This repository documents the setup and ongoing development of my personal homelab environment. The purpose of this project is to gain hands-on experience with IT networking, virtualization, and cybersecurity concepts while building a professional portfolio that demonstrates applied skills.  
 
-This lab supports my career development path as I prepare for the **CompTIA Network+ certification** and pursue longer-term goals in **networking & cybersecurity**.
+This lab supports my career development path by applying skills gained from earning the **CompTIA Network+** and **CompTIA Data+** certifications, while pursuing longer-term goals in networking & cybersecurity.
+
+---
+
+## 📊 Logical Network Topology
+
+![Homelab Network Topology](images/homelab_topology.png)
+
+The diagram above represents the logical design of the homelab, including VLAN groupings, firewall placement, and switch segmentation.  
 
 ---
 
@@ -23,9 +31,9 @@ This lab supports my career development path as I prepare for the **CompTIA Netw
 [➡ View full router security & optimization notes](router_security.md)
 
 ### Switch
-- TP-Link TL-SG705 unmanaged switch.  
-- Provides Ethernet connectivity for PC, PS5, and TV.  
-- Improves QoS and reduces latency vs direct router connection.  
+- **Upgraded to TP-Link TL-SG1024DE Easy Smart Switch** (previously TL-SG705 unmanaged).  
+- Provides VLAN management, loop prevention, and QoS features.  
+- Current VLAN assignments documented below.  
 
 ### Proxmox Virtualization
 - Running on Dell OptiPlex 7020 Micro (repurposed from BitLocker lock).  
@@ -46,6 +54,20 @@ This lab supports my career development path as I prepare for the **CompTIA Netw
 
 ---
 
+## 🖧 VLAN Segmentation
+
+| VLAN | Purpose              | Devices / Ports                        |
+|------|----------------------|----------------------------------------|
+| 10   | Management           | Router uplink (F0/1), Gaming PC (optional) |
+| 20   | Servers / Infra      | Proxmox (F0/2), VM Practice (F0/4), NAS (F0/6) |
+| 30   | Media / Entertainment| Printer (F0/19), PS5 (F0/21), Smart TV (F0/23), Future Media (F0/17) |
+| 40   | Wireless / IoT (2.4GHz) | Phones, IoT devices (SSID_NAME)        |
+| 50   | High-Perf Wi-Fi      | Gaming PC (SSID_MLO)                   |
+
+> **Note:** The Gaming PC is primarily assigned to VLAN 50 for high-performance Wi-Fi, but can also be temporarily assigned to VLAN 10 for homelab management (e.g., Proxmox or NAS administration).  
+
+---
+
 ## 🛠️ Tools & Resources
 - **Proxmox VE** — virtualization platform.  
 - **OpenVPN Connect** — client used for VPN testing.  
@@ -60,6 +82,7 @@ This lab supports my career development path as I prepare for the **CompTIA Netw
 - **2025-08-20** — Replaced router with TP-Link Archer BE6500, segmented SSIDs (SSID_NAME, SSID_MLO).  
 - **2025-08-21** — Reviewed DHCP ranges for static IP assignment.  
 - **2025-08-22** — Added TL-SG705 switch, moved devices for QoS improvements.  
+- **2025-08-29** — **Upgraded switch to TP-Link TL-SG1024DE Easy Smart Switch**, enabling VLAN support and more accurate homelab representation.  
 - **2025-08-24** — Flashed USB with Proxmox VE, repurposed Dell OptiPlex, wiped BitLocker partitions.  
 - **2025-08-25** — Installed Proxmox, set static IP, configured AdGuard DNS.  
 - **2025-08-25** — Installed Linux utilities (`tree`), relocated device to desk, began planning NAS and clustering.  
@@ -103,6 +126,7 @@ This lab supports my career development path as I prepare for the **CompTIA Netw
 │   ├── vpn/
 │   ├── proxmox/
 │   ├── router/
+│   ├── homelab_topology.png
 │
 └── README.md
 ```
@@ -117,4 +141,4 @@ It serves as a **portfolio project** to showcase:
 - VPN deployment and testing.  
 - Virtualization with Proxmox VE.  
 - Security hardening on consumer routers.  
-- Documentation of lessons learned and future roadmap. 
+- Documentation of lessons learned and future roadmap.  
