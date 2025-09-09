@@ -96,14 +96,36 @@ The diagram above represents the logical design of the homelab, including VLAN g
 
 ## 🚧 Future Plans
 
-- Deploy **NAS** for backups and centralized storage.  
-- Expand Proxmox into a **clustered environment** with multiple OptiPlex nodes.  
 - Enable **IP/MAC Binding** for critical hosts (Proxmox, NAS, main PC).  
 - Configure **manual port forwarding** (replace UPnP) for gaming services (PS5, Steam, Epic).  
 - Implement **VLAN segmentation** (Homelab / IoT / Personal).  
 - Migrate LAN subnet from **192.168.0.0/24 → 192.168.10.0/24** for cleaner addressing.  
 - Evaluate **pfSense/OPNsense** (dedicated or VM) for IDS/IPS and advanced firewall rules.  
 - Deploy **virtual honeypots** (via Proxmox or Azure) for traffic logging and analysis.  
+
+---
+
+## Homelab Journal Entry – Stopping Point (Hardware Limitations)
+
+At this stage in the homelab build, development has reached a **temporary stopping point** due to physical hardware constraints. The Dell OptiPlex 7020 currently only has a single onboard NIC, which prevents us from cleanly configuring OPNsense in Proxmox for proper WAN/LAN separation and VLAN routing. While a managed switch (TP-Link TL-SG1024DE) is already in place, the inability to trunk VLAN-tagged traffic onto wireless SSIDs via the TP-Link BE6500 router further limits testing and segmentation.  
+
+### Current Limiting Factors
+- **Single NIC** on the OptiPlex → cannot dedicate interfaces for WAN and LAN simultaneously in OPNsense.  
+- **Router (BE6500)** → no VLAN-to-SSID tagging support.  
+- **No dedicated firewall appliance** → prevents full VLAN segmentation and inter-VLAN routing at this stage.  
+
+### Next Planned Hardware Steps
+- Acquire a **dedicated firewall appliance** (pfSense/OPNsense capable, multi-NIC).  
+- Add a **VLAN-capable wireless access point** (TP-Link Omada or UniFi) to map SSIDs → VLANs.  
+- Optionally add a **dual/quad-port Intel NIC** to the OptiPlex for more Proxmox flexibility.  
+
+### Interim Actions
+While waiting on hardware upgrades, focus will shift to:  
+- **Azure Virtualization Labs** → practicing networking and virtualization concepts in a cloud environment.  
+- **UGREEN NAS Virtualization Features** → exploring lightweight VM/Container options built into the NAS for additional practice and lab scenarios.  
+
+This pause reflects a **hardware limitation rather than a configuration error**. Once new equipment is added, VLAN segmentation, OPNsense routing, and access point integration can continue in the homelab.  
+
 
 ---
 
