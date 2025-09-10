@@ -151,6 +151,7 @@ This pause reflects a **hardware limitation rather than a configuration error**.
 │   ├── homelab_topology.png
 │
 └── README.md
+└── LICENSE
 ```
 
 ---
