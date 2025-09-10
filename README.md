@@ -44,6 +44,20 @@ The diagram above represents the logical design of the homelab, including VLAN g
   - Wiped legacy partitions and allocated storage for virtualization.  
 - Added basic Linux tools (`tree`) for navigation.  
 - Partitioned 14GB to `lxc-storage (pve)` (not sufficient for hosting — NAS planned).  
+- After struggling to determine the purpose of the Proxmox device, began attempting virtualization installs.  
+  - Initial Ubuntu Server installation failed.  
+  - Attempted NAS-backed Ubuntu install via UGREEN NAS — also failed.  
+  - Switched to Alpine Linux as a lightweight alternative — failed again.  
+  - Set project aside temporarily.  
+  - Returned and successfully installed Ubuntu Server with improved resource allocation (4GB RAM, host has 8GB total).
+- First successful VM deployment used to host a Minecraft server:
+  - Installed Java 1.21
+  - Downloaded and configured Minecraft Java Edition 1.21.8
+  - Created dedicated `minecraft` user and a new file directory
+  - Corrected an IP conflict caused by assigning a reserved address
+  - Updated `server.properties` with the correct static IP
+  - Successfully tested LAN access
+  - Verified WAN functionality using dynamic DNS (external user was able to join)
 
 ### VPN
 - OpenVPN server configured directly on the Archer BE6500.  
@@ -56,15 +70,16 @@ The diagram above represents the logical design of the homelab, including VLAN g
 
 ## 🖧 VLAN Segmentation
 
-| VLAN | Purpose              | Devices / Ports                        |
-|------|----------------------|----------------------------------------|
-| 10   | Management           | Router uplink (F0/1), Gaming PC (optional) |
-| 20   | Servers / Infra      | Proxmox (F0/2), VM Practice (F0/4), NAS (F0/6) |
-| 30   | Media / Entertainment| Printer (F0/19), PS5 (F0/21), Smart TV (F0/23), Future Media (F0/17) |
-| 40   | Wireless / IoT (2.4GHz) | Phones, IoT devices (SSID_NAME)        |
-| 50   | High-Perf Wi-Fi      | Gaming PC (SSID_MLO)                   |
+| VLAN | Purpose               | Devices / Ports                                      |
+|------|------------------------|------------------------------------------------------|
+| 10   | Management             | Router uplink (F0/1), Gaming PC (optional)           |
+| 20   | Servers / Infra        | Proxmox (F0/2), VM Practice (F0/4), NAS (F0/6)       |
+| 30   | Media / Entertainment  | Printer (F0/19), PS5 (F0/21), Smart TV (F0/23), Future Media (F0/17) |
+| 40   | Wireless / IoT (2.4GHz)| Phones, IoT devices (SSID_NAME)                      |
+| 50   | High-Perf Wi-Fi        | Gaming PC (SSID_MLO)                                 |
 
-> **Note:** The Gaming PC is primarily assigned to VLAN 50 for high-performance Wi-Fi, but can also be temporarily assigned to VLAN 10 for homelab management (e.g., Proxmox or NAS administration).  
+> **Note 1:** As of 2025-09-10, VLAN functionality has been temporarily disabled due to router limitations with inter-VLAN routing. See "Homelab Journal" section for more details.  
+> **Note 2:** The Gaming PC is primarily assigned to VLAN 50 for high-performance Wi-Fi, but can also be temporarily assigned to VLAN 10 for homelab management (e.g., Proxmox or NAS administration).  
 
 ---
 
@@ -79,18 +94,21 @@ The diagram above represents the logical design of the homelab, including VLAN g
 
 ## 📓 Lab Journal (Changelog)
 
-- 2025-08-20 — Replaced router with TP-Link Archer BE6500, segmented SSIDs (SSID_NAME, SSID_MLO).
-- 2025-08-21 — Reviewed DHCP ranges for static IP assignment.
-- 2025-08-22 — Added TL-SG705 switch, moved devices for QoS improvements.
-- 2025-08-24 — Flashed USB with Proxmox VE, repurposed Dell OptiPlex, wiped BitLocker partitions.
-- 2025-08-25 — Installed Proxmox, set static IP, configured AdGuard DNS.
-- 2025-08-25 — Installed Linux utilities (tree), relocated device to desk, began planning NAS and clustering.
-- 2025-08-25 — Partitioned 14GB for lxc-storage (pve); determined insufficient for self-hosting apps (NAS planned).
-- 2025-08-26 — Configured OpenVPN server on Archer BE6500. Generated certificate, set up TP-Link DDNS, exported client config, and confirmed remote VPN tunnel working.
-- 2025-08-26 — Documented VPN screenshots and created dedicated vpn_setup/ folder with guides and links.
-- 2025-08-26 — Reviewed Archer firewall/security (SPI, Access Control, IP/MAC binding, Device Isolation). Planned future IP/MAC binding for Proxmox/NAS.
-- 2025-08-29 — ISP upgraded from Spectrum 500 Mbps to Frontier Fiber 1 Gbps symmetric. Enabled testing of VPN in full-tunnel mode and improved latency for Wi-Fi 7 segmentation.
-- 2025-09-04 — Upgraded switch to TP-Link TL-SG1024DE Easy Smart Switch, replacing TL-SG705. Configured VLAN segmentation (Mgmt, Servers, Media, IoT, High-Perf Wi-Fi) and finalized logical network topology diagram for portfolio documentation. 
+- 2025-08-20 — Replaced router with TP-Link Archer BE6500, segmented SSIDs (SSID_NAME, SSID_MLO).  
+- 2025-08-21 — Reviewed DHCP ranges for static IP assignment.  
+- 2025-08-22 — Added TL-SG705 switch, moved devices for QoS improvements.  
+- 2025-08-24 — Flashed USB with Proxmox VE, repurposed Dell OptiPlex, wiped BitLocker partitions.  
+- 2025-08-25 — Installed Proxmox, set static IP, configured AdGuard DNS.  
+- 2025-08-25 — Installed Linux utilities (tree), relocated device to desk, began planning NAS and clustering.  
+- 2025-08-25 — Partitioned 14GB for lxc-storage (pve); determined insufficient for self-hosting apps (NAS planned).  
+- 2025-08-26 — Configured OpenVPN server on Archer BE6500. Generated certificate, set up TP-Link DDNS, exported client config, and confirmed remote VPN tunnel working.  
+- 2025-08-26 — Documented VPN screenshots and created dedicated vpn_setup/ folder with guides and links.  
+- 2025-08-26 — Reviewed Archer firewall/security (SPI, Access Control, IP/MAC binding, Device Isolation). Planned future IP/MAC binding for Proxmox/NAS.  
+- 2025-08-29 — ISP upgraded from Spectrum 500 Mbps to Frontier Fiber 1 Gbps symmetric. Enabled testing of VPN in full-tunnel mode and improved latency for Wi-Fi 7 segmentation.  
+- 2025-09-04 — Upgraded switch to TP-Link TL-SG1024DE Easy Smart Switch, replacing TL-SG705. Configured VLAN segmentation (Mgmt, Servers, Media, IoT, High-Perf Wi-Fi) and finalized logical network topology diagram for portfolio documentation.  
+- 2025-09-07 — Attempted virtualization of Ubuntu and Alpine Linux on Proxmox. Also tested NAS-backed install via UGREEN NAS. All failed initially.  
+- 2025-09-09 — Successfully created Ubuntu VM with 4GB RAM. Installed Java 1.21 and Minecraft Java Edition 1.21.8. Created `minecraft` user and configured server directory. Corrected static IP conflict and verified successful LAN and WAN access.  
+- 2025-09-10 — VLAN isolation worked locally but failed to route externally. Devices in VLANs could not access Internet. VLAN testing disabled until inter-VLAN routing solution is implemented.  
 
 ---
 
@@ -102,6 +120,7 @@ The diagram above represents the logical design of the homelab, including VLAN g
 - Migrate LAN subnet from **192.168.0.0/24 → 192.168.10.0/24** for cleaner addressing.  
 - Evaluate **pfSense/OPNsense** (dedicated or VM) for IDS/IPS and advanced firewall rules.  
 - Deploy **virtual honeypots** (via Proxmox or Azure) for traffic logging and analysis.  
+- Maintain Ubuntu VM running Minecraft server for internal and external access.  
 
 ---
 
@@ -125,7 +144,6 @@ While waiting on hardware upgrades, focus will shift to:
 - **UGREEN NAS Virtualization Features** → exploring lightweight VM/Container options built into the NAS for additional practice and lab scenarios.  
 
 This pause reflects a **hardware limitation rather than a configuration error**. Once new equipment is added, VLAN segmentation, OPNsense routing, and access point integration can continue in the homelab.  
-
 
 ---
 
@@ -164,4 +182,5 @@ It serves as a **portfolio project** to showcase:
 - VPN deployment and testing.  
 - Virtualization with Proxmox VE.  
 - Security hardening on consumer routers.  
-- Documentation of lessons learned and future roadmap.  
+- Documentation of lessons learned and future roadmap.
+
