@@ -38,6 +38,8 @@ The OpenVPN server requires a certificate for encryption and authentication. Thi
 
 ![Enable OpenVPN](../images/vpn/enable_openvpn.png)
 
+  - **Selected Mode**: This homelab now uses **Home Network + Internet** (full-tunnel) to encrypt all traffic through the home network.
+
 ---
 
 ## 4. Export the OpenVPN Configuration File
@@ -73,6 +75,8 @@ The OpenVPN server requires a certificate for encryption and authentication. Thi
 --
 ![Connection Check](../images/vpn/openvpn_connection_check.png)
 
+  - This behavior confirms the homelab's current configuration: **full-tunnel routing is enabled.**
+
 ---
 
 ## Notes
@@ -80,6 +84,7 @@ The OpenVPN server requires a certificate for encryption and authentication. Thi
 - **Modes:**  
   - *Home Network Only*: Only access LAN devices. Faster on limited upload speeds.  
   - *Home Network + Internet*: Encrypts *all* traffic through home network. Best when using Fiber or on untrusted Wi-Fi.  
+    **→ Currently active mode in this homelab.**
 - **Next Steps:** In future, experiment with WireGuard or pfSense for advanced VPN setups.  
 
 ---
