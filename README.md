@@ -1,8 +1,6 @@
 # 🏡 Home-Lab Network Infrastructure Project
 
-This repository documents the setup and ongoing development of my personal homelab environment. The purpose of this project is to gain hands-on experience with IT networking, virtualization, and cybersecurity concepts while building a professional portfolio that demonstrates applied skills.  
-
-This lab supports my career development path by applying skills gained from earning the **CompTIA Network+** and **CompTIA Data+** certifications, while pursuing longer-term goals in networking & cybersecurity.
+This repository documents the setup and ongoing development of my personal homelab environment. While it serves as part of my professional portfolio, it is equally designed as a practical guide for others interested in creating their own homelab networks. My goal is to share both successes and challenges in a way that makes complex IT, networking, and cybersecurity concepts more approachable, user-friendly, and replicable for anyone starting their own journey.
 
 ---
 
@@ -120,7 +118,22 @@ The diagram above represents the logical design of the homelab, including VLAN g
 - Migrate LAN subnet from **192.168.0.0/24 → 192.168.10.0/24** for cleaner addressing.  
 - Evaluate **pfSense/OPNsense** (dedicated or VM) for IDS/IPS and advanced firewall rules.  
 - Deploy **virtual honeypots** (via Proxmox or Azure) for traffic logging and analysis.  
-- Maintain Ubuntu VM running Minecraft server for internal and external access.  
+- Maintain Ubuntu VM running a Minecraft server for internal and external access.  
+
+These future steps will continue expanding the homelab’s capabilities, with a particular focus on security, segmentation, and practical documentation. The next logical phase is exploring a dedicated firewall solution that can bridge the gap between consumer-grade routers and enterprise-style security.  
+
+---
+
+## 🔒 Potential Firewalla Integration
+
+As part of that next phase, I am evaluating dedicated firewall solutions to either replace or supplement the TP-Link BE6500 router. Firewalla’s Gold series is of particular interest because it combines enterprise-grade features (IDS/IPS, VPN, VLAN segmentation) with user-friendly management that makes advanced networking more approachable.  
+
+Planned integration goals include:  
+- Demonstrating VLAN-to-SSID assignments for clean wireless segmentation.  
+- Showcasing Firewalla’s IDS/IPS capabilities to monitor both internal (east-west) and external (north-south) traffic.  
+- Creating beginner-friendly, step-by-step documentation to guide others transitioning from consumer routers to a Firewalla-based homelab setup.  
+
+This integration would not only extend my own hands-on experience but also serve as a practical resource for others who want to strengthen their home networks while keeping the learning curve manageable.  
 
 ---
 
