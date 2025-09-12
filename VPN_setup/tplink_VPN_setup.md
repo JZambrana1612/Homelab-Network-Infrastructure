@@ -61,7 +61,9 @@ The OpenVPN server requires a certificate for encryption and authentication. Thi
 When editing your exported `.ovpn` file, make sure to update it with the highlighted lines below.  
 These small adjustments ensure your VPN connection stays stable, even if your public IP changes or your router resets.
 
-![Fine-Tuned OVPN Config](./images/ovpn_finetune.png)
+![Fine-Tuned OVPN Config](../images/vpn/ovpn_finetune.png)
+
+Note: Some values in the screenshot (hostname/port) are intentionally redacted for security. Since more than likely you've already downloaded OpenVPN on your device, please open the `.ovpn` file with  a service such as *Visual Studio Code* to edit the file as shown above.
 
 ### Why This Matters
 - ✅ Using your **Dynamic DNS hostname** (instead of a raw IP) ensures the VPN always points to your current public IP.  
