@@ -4,6 +4,18 @@ This repository documents the setup and ongoing development of my personal homel
 
 ---
 
+## 💡 A Note on Learning & Frustration
+
+Building a homelab can be both exciting and challenging. While this repository is designed to make concepts user-friendly, there will be times when things feel overly complicated or don’t work as expected on the first try. From personal experience, I’ve had many setbacks and moments of frustration — but those same moments make the successes far more rewarding.
+
+If you ever get stuck, I recommend taking a day or two away from the project and returning with fresh eyes. More than likely, you won’t get everything working perfectly on the first attempt — and that’s completely normal.  
+
+Some topics in this repository may lean more advanced, while others highlight user-friendly alternatives and products. The idea is to show multiple paths forward so you can choose the approach that fits your comfort level.
+
+This project also assumes familiarity with common networking acronyms and jargon. If anything feels unfamiliar, a quick search will usually clarify things — and often lead you to new learning opportunities.
+
+---
+
 ## 📊 Logical Network Topology
 
 ![Homelab Network Topology](images/homelab_topology.png)
@@ -144,7 +156,8 @@ At this stage in the homelab build, development has reached a **temporary stoppi
 ### Current Limiting Factors
 - **Single NIC** on the OptiPlex → cannot dedicate interfaces for WAN and LAN simultaneously in OPNsense.  
 - **Router (BE6500)** → no VLAN-to-SSID tagging support.  
-- **No dedicated firewall appliance** → prevents full VLAN segmentation and inter-VLAN routing at this stage.  
+- **No dedicated firewall appliance** → prevents full VLAN segmentation and inter-VLAN routing at this stage.
+- These limitations also impact our VPN segmentation, since remote clients currently land on the flat LAN instead of isolated VLANs.
 
 ### Next Planned Hardware Steps
 - Acquire a **dedicated firewall appliance** (pfSense/OPNsense capable, multi-NIC).  
@@ -190,10 +203,14 @@ This pause reflects a **hardware limitation rather than a configuration error**.
 ## ⚡ Summary
 
 This homelab demonstrates practical networking, virtualization, and security skills using consumer hardware with enterprise concepts.  
-It serves as a **portfolio project** to showcase:  
-- Network segmentation (SSID strategy, VLAN planning).  
-- VPN deployment and testing.  
-- Virtualization with Proxmox VE.  
-- Security hardening on consumer routers.  
-- Documentation of lessons learned and future roadmap.
+It is intended as a **hands-on guide and learning resource** for anyone exploring homelab networking. The repository combines real-world examples, lessons learned, and alternative approaches to help others adapt these ideas to their own environments.  
+
+This guide showcases:  
+- Network segmentation strategies (SSID planning, VLAN design).  
+- VPN deployment and troubleshooting with OpenVPN.  
+- Virtualization using Proxmox VE on repurposed hardware.  
+- Security hardening methods applied to consumer-grade routers.  
+- Step-by-step documentation, including mistakes and fixes, to make learning approachable.  
+- Notes on future expansion paths (dedicated firewall appliances, VLAN-capable access points, etc.), showing how advanced and user-friendly products can both fit into a homelab journey.  
+
 
