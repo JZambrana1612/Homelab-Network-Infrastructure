@@ -80,17 +80,24 @@ This document captures the security hardening and wireless optimization applied 
 
 ---
 
-## 🚧 Future Considerations
+## 🛡️ Future Considerations
 
 ### LAN Redesign
-- Migrate LAN from **192.168.0.0/24 → 192.168.10.0/24** for cleaner addressing.  
-- Reserve static IPs for Proxmox, NAS, main PC; DHCP pool for general devices.
+- Migrate LAN from **192.168.x.x/24 → 192.168.y.x/24** for cleaner addressing and easier subnet management.  
+- Reserve static IPs for critical infrastructure (Proxmox host, NAS, main PC), while keeping DHCP pools for general devices.  
+- This redesign will also simplify VPN routing and static bindings across VLANs.
 
-### Segmentation / VLANs
-- Potential future isolation for **Homelab**, **Personal**, **IoT** networks.
+### Segmentation & VLANs
+- Current limitation: the TP-Link BE6500 provides a stable VPN endpoint but VLAN tagging is limited to wired ports.  
+- Goal: Extend segmentation to **Homelab, Personal, and IoT networks**, ensuring VPN users on **wireless SSIDs** receive the same isolation as Ethernet devices.  
+- To achieve this, we’re evaluating a **TP-Link Omada Access Point**, which introduces SSID-based VLAN tagging for full wireless coverage.
 
-### Dedicated Firewall (pfSense/OPNsense or Proxmox VM)
-- Advanced rules, IDS/IPS, full logging/monitoring, and per‑device VPN policies.
+### Dedicated Firewall / Security Layer
+- While the router-based OpenVPN server is effective, it lacks advanced features such as **inter-VLAN routing, IDS/IPS, and detailed per-device policies**.  
+- Two paths under consideration:  
+  - **Virtualized Firewall**: pfSense or OPNsense deployed on Proxmox for fine-grained control, traffic inspection, and custom VPN policies.  
+  - **Dedicated Security Appliance**: Firewalla’s *Cybersecurity Gold* line, offering an accessible, user-friendly management interface while maintaining enterprise-grade protection.  
+- Either approach would strengthen our VPN setup, close current segmentation gaps, and prepare the network for future scalability.
 
 ---
 
