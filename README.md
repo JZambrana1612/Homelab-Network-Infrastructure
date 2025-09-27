@@ -136,40 +136,19 @@ These future steps will continue expanding the homelab’s capabilities, with a 
 
 ---
 
-## 🔒 Potential Firewalla Integration
+## 🌱 Closing Note & Next Steps
 
-As part of that next phase, I am evaluating dedicated firewall solutions to either replace or supplement the TP-Link BE6500 router. Firewalla’s Gold series is of particular interest because it combines enterprise-grade features (IDS/IPS, VPN, VLAN segmentation) with user-friendly management that makes advanced networking more approachable.  
+This repository now represents the **completed barebones structure** of the homelab network. It’s meant to serve as a starting point — simple enough for newcomers to replicate, while still showing how consumer-grade equipment can be pushed toward enterprise-style concepts.
 
-Planned integration goals include:  
-- Demonstrating VLAN-to-SSID assignments for clean wireless segmentation.  
-- Showcasing Firewalla’s IDS/IPS capabilities to monitor both internal (east-west) and external (north-south) traffic.  
-- Creating beginner-friendly, step-by-step documentation to guide others transitioning from consumer routers to a Firewalla-based homelab setup.  
+Rather than overloading this repository with every advanced configuration, future projects will be broken out into their own dedicated repositories. This way, each topic remains focused, approachable, and easier to follow step by step.  
 
-This integration would not only extend my own hands-on experience but also serve as a practical resource for others who want to strengthen their home networks while keeping the learning curve manageable.  
+Upcoming repositories will include:  
+- **Starting Your First Ubuntu Server VM on Proxmox**  
+- **Installing and Configuring Pi-hole for DNS Filtering**  
+- **Creating and Exposing a Honeypot on Azure for Cybersecurity Testing**  
 
----
-
-## Homelab Journal Entry – Stopping Point (Hardware Limitations)
-
-At this stage in the homelab build, development has reached a **temporary stopping point** due to physical hardware constraints. The Dell OptiPlex 7020 currently only has a single onboard NIC, which prevents us from cleanly configuring OPNsense in Proxmox for proper WAN/LAN separation and VLAN routing. While a managed switch (TP-Link TL-SG1024DE) is already in place, the inability to trunk VLAN-tagged traffic onto wireless SSIDs via the TP-Link BE6500 router further limits testing and segmentation.  
-
-### Current Limiting Factors
-- **Single NIC** on the OptiPlex → cannot dedicate interfaces for WAN and LAN simultaneously in OPNsense.  
-- **Router (BE6500)** → no VLAN-to-SSID tagging support.  
-- **No dedicated firewall appliance** → prevents full VLAN segmentation and inter-VLAN routing at this stage.
-- These limitations also impact our VPN segmentation, since remote clients currently land on the flat LAN instead of isolated VLANs.
-
-### Next Planned Hardware Steps
-- Acquire a **dedicated firewall appliance** (pfSense/OPNsense capable, multi-NIC).  
-- Add a **VLAN-capable wireless access point** (TP-Link Omada or UniFi) to map SSIDs → VLANs.  
-- Optionally add a **dual/quad-port Intel NIC** to the OptiPlex for more Proxmox flexibility.  
-
-### Interim Actions
-While waiting on hardware upgrades, focus will shift to:  
-- **Azure Virtualization Labs** → practicing networking and virtualization concepts in a cloud environment.  
-- **UGREEN NAS Virtualization Features** → exploring lightweight VM/Container options built into the NAS for additional practice and lab scenarios.  
-
-This pause reflects a **hardware limitation rather than a configuration error**. Once new equipment is added, VLAN segmentation, OPNsense routing, and access point integration can continue in the homelab.  
+By keeping the homelab foundation lightweight here, and branching into more advanced topics separately, the overall goal remains the same:  
+**to share lessons learned, highlight both enterprise-grade and user-friendly approaches, and inspire others to keep experimenting — even when it gets frustrating.**
 
 ---
 
