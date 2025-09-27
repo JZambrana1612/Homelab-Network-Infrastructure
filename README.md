@@ -136,22 +136,6 @@ These future steps will continue expanding the homelab’s capabilities, with a 
 
 ---
 
-## 🌱 Closing Note & Next Steps
-
-This repository now represents the **completed barebones structure** of the homelab network. It’s meant to serve as a starting point — simple enough for newcomers to replicate, while still showing how consumer-grade equipment can be pushed toward enterprise-style concepts.
-
-Rather than overloading this repository with every advanced configuration, future projects will be broken out into their own dedicated repositories. This way, each topic remains focused, approachable, and easier to follow step by step.  
-
-Upcoming repositories will include:  
-- **Starting Your First Ubuntu Server VM on Proxmox**  
-- **Installing and Configuring Pi-hole for DNS Filtering**  
-- **Creating and Exposing a Honeypot on Azure for Cybersecurity Testing**  
-
-By keeping the homelab foundation lightweight here, and branching into more advanced topics separately, the overall goal remains the same:  
-**to share lessons learned, highlight both enterprise-grade and user-friendly approaches, and inspire others to keep experimenting — even when it gets frustrating.**
-
----
-
 ## 📂 Repository Structure
 
 ```plaintext
@@ -192,4 +176,21 @@ This guide showcases:
 - Step-by-step documentation, including mistakes and fixes, to make learning approachable.  
 - Notes on future expansion paths (dedicated firewall appliances, VLAN-capable access points, etc.), showing how advanced and user-friendly products can both fit into a homelab journey.  
 
+---
+
+## 🌱 Closing Note & Next Steps
+
+This repository now represents the **completed barebones structure** of the homelab network. It’s meant to serve as a starting point — simple enough for newcomers to replicate, while still showing how consumer-grade equipment can be pushed toward enterprise-style concepts.
+
+Rather than overloading this repository with every advanced configuration, future projects will be broken out into their own dedicated repositories. This way, each topic remains focused, approachable, and easier to follow step by step.  
+
+Upcoming repositories will include:  
+- **Starting Your First Ubuntu Server VM on Proxmox**  
+- **Installing and Configuring Pi-hole for DNS Filtering**  
+- **Creating and Exposing a Honeypot on Azure for Cybersecurity Testing**  
+
+By keeping the homelab foundation lightweight here, and branching into more advanced topics separately, the overall goal remains the same:  
+**to share lessons learned, highlight both enterprise-grade and user-friendly approaches, and inspire others to keep experimenting — even when it gets frustrating.**
+
+---
 
