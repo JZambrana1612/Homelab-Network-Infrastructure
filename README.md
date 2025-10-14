@@ -1,196 +1,181 @@
-# 🏡 Home-Lab Network Infrastructure Project
+# 🧠 BearLabs 2025 – Professional Homelab Infrastructure Project  
 
-This repository documents the setup and ongoing development of my personal homelab environment. While it serves as part of my professional portfolio, it is equally designed as a practical guide for others interested in creating their own homelab networks. My goal is to share both successes and challenges in a way that makes complex IT, networking, and cybersecurity concepts more approachable, user-friendly, and replicable for anyone starting their own journey.
+This repository documents the **BearLabs Homelab**, a fully segmented, professionally architected hybrid network designed to demonstrate enterprise-level IT, networking, and cybersecurity concepts in a home environment.  
 
----
+What began as a learning experiment on consumer hardware has evolved into a **production-grade, Omada-managed infrastructure**, integrating virtualization, network segmentation, VPN, IDS/IPS, and DNS filtering across a multi-device ecosystem.  
 
-## 💡 A Note on Learning & Frustration
-
-Building a homelab can be both exciting and challenging. While this repository is designed to make concepts user-friendly, there will be times when things feel overly complicated or don’t work as expected on the first try. From personal experience, I’ve had many setbacks and moments of frustration — but those same moments make the successes far more rewarding.
-
-If you ever get stuck, I recommend taking a day or two away from the project and returning with fresh eyes. More than likely, you won’t get everything working perfectly on the first attempt — and that’s completely normal.  
-
-Some topics in this repository may lean more advanced, while others highlight user-friendly alternatives and products. The idea is to show multiple paths forward so you can choose the approach that fits your comfort level.
-
-This project also assumes familiarity with common networking acronyms and jargon. If anything feels unfamiliar, a quick search will usually clarify things — and often lead you to new learning opportunities.
+The project showcases a realistic approach to small-scale enterprise networking, emphasizing **scalability, security, and documentation discipline**.  
 
 ---
 
-## 📊 Logical Network Topology
+## 🧩 System Architecture Overview  
 
-![Homelab Network Topology](images/BearLab-LD.png)
+### **Router / Firewall Layer**
+- **Device:** TP-Link **Omada ER707-M2**
+- **Functions:** Core routing, DHCP, VLAN trunking, firewall management, VPN endpoint
+- **Features Enabled:**
+  - IDS/IPS (Intrusion Detection System) in IDS-only mode  
+  - IP/MAC binding for static endpoints (Proxmox, NAS, main PC)  
+  - Port forwarding for key services (Caddy HTTP/HTTPS, qBittorrent)
+- **Dynamic DNS:** Custom No-IP domain ensuring VPN resilience even under ISP IP changes  
+- **VPN:** New **OpenVPN** setup integrated directly within the Omada ecosystem  
 
-The diagram above represents the logical design of the homelab, including VLAN groupings, firewall placement, and switch segmentation.  
+### **Switch Layer**
+- **Device:** TP-Link **TL-SG1024DE** Smart Managed Switch  
+- Provides VLAN tagging, loop prevention, and QoS  
+- Acts as trunk bridge between router, NAS, and Proxmox hosts  
+- Port 21: Primary trunk port (VLAN 1 untagged / VLAN 3 tagged)  
 
----
-
-## 📌 Current Environment
-
-### Router & Wireless Segmentation
-- TP-Link Archer BE6500 (Wi-Fi 7) deployed as core router.  
-- **SSID_MLO** → WPA3-only, for modern/high-bandwidth devices (gaming PC, PS5, Proxmox).  
-- **SSID_NAME** → WPA2/WPA3 mixed mode, fallback for legacy/IoT devices.  
-- Security measures applied:  
-  - WPA3 prioritized, legacy fallback limited  
-  - WPS disabled  
-  - DNS over TLS with AdGuard DNS  
-  - EasyMesh disabled  
-  - Remote management disabled  
-  - SPI Firewall enabled, WAN ping disabled  
-
-[➡ View full router security & optimization notes](router_security.md)
-
-### Switch
-- **Upgraded to TP-Link TL-SG1024DE Easy Smart Switch** (previously TL-SG705 unmanaged).  
-- Provides VLAN management, loop prevention, and QoS features.  
-- Current VLAN assignments documented below.  
-
-### Proxmox Virtualization
-- Running on Dell OptiPlex 7020 Micro (repurposed from BitLocker lock).  
-- Installed **Proxmox VE 9.0** via bootable USB (Rufus).  
-- Configured:  
-  - Static IP addressing  
-  - Correct gateway and DNS (AdGuard)  
-  - Wiped legacy partitions and allocated storage for virtualization.  
-- Added basic Linux tools (`tree`) for navigation.  
-- Partitioned 14GB to `lxc-storage (pve)` (not sufficient for hosting — NAS planned).  
-- After struggling to determine the purpose of the Proxmox device, began attempting virtualization installs.  
-  - Initial Ubuntu Server installation failed.  
-  - Attempted NAS-backed Ubuntu install via UGREEN NAS — also failed.  
-  - Switched to Alpine Linux as a lightweight alternative — failed again.  
-  - Set project aside temporarily.  
-  - Returned and successfully installed Ubuntu Server with improved resource allocation (4GB RAM, host has 8GB total).
-- First successful VM deployment used to host a Minecraft server:
-  - Installed Java 1.21
-  - Downloaded and configured Minecraft Java Edition 1.21.8
-  - Created dedicated `minecraft` user and a new file directory
-  - Corrected an IP conflict caused by assigning a reserved address
-  - Updated `server.properties` with the correct static IP
-  - Successfully tested LAN access
-  - Verified WAN functionality using dynamic DNS (external user was able to join)
-
-### VPN
-- OpenVPN server configured directly on the Archer BE6500.  
-- Certificate generated and exported with DDNS hostname.  
-- Client profile imported into OpenVPN Connect.  
-- Remote testing verified: LAN access works, IP routing confirmed.  
-- Documented sanitized screenshots of connection process.  
+### **Access Layer**
+- **Device:** TP-Link **Omada EAP720** Wi-Fi 7 Access Point  
+- VLAN-based SSID segmentation aligned with wired VLANs  
+- Managed by Omada Controller VM for unified network visibility and policy enforcement  
 
 ---
 
-## 🖧 VLAN Segmentation
+## 🧱 Compute & Virtualization Layer  
 
-| VLAN | Purpose               | Devices / Ports                                      |
-|------|------------------------|------------------------------------------------------|
-| 10   | Management             | Router uplink (F0/1), Gaming PC (optional)           |
-| 20   | Servers / Infra        | Proxmox (F0/2), VM Practice (F0/4), NAS (F0/6)       |
-| 30   | Media / Entertainment  | Printer (F0/19), PS5 (F0/21), Smart TV (F0/23), Future Media (F0/17) |
-| 40   | Wireless / IoT (2.4GHz)| Phones, IoT devices (SSID_NAME)                      |
-| 50   | High-Perf Wi-Fi        | Gaming PC (SSID_MLO)                                 |
+| Host | Role | Key Workloads | Notes |
+|------|------|----------------|-------|
+| **Proxmox 1** | Network & Security Core | Pi-hole VM, Minecraft Server, (future OPNsense) | Higher RAM allocation, dedicated for infrastructure tasks |
+| **Proxmox 2** | Application Layer | Docker VM running Portainer Agent + Omada Controller | 24/7 uptime, reduced dependency on main PC |
+| **UGREEN NAS (4-Bay)** | Storage & Media | Caddy Proxy, Jellyfin, Immich, qBittorrent, Portainer | Serves as data hub and Docker host for media & utility containers |
 
-> **Note 1:** As of 2025-09-10, VLAN functionality has been temporarily disabled due to router limitations with inter-VLAN routing. See "Homelab Journal" section for more details.  
-> **Note 2:** The Gaming PC is primarily assigned to VLAN 50 for high-performance Wi-Fi, but can also be temporarily assigned to VLAN 10 for homelab management (e.g., Proxmox or NAS administration).  
+> Future plans include evaluating **OPNsense** deployment on Proxmox 1 or the addition of a third OptiPlex node (Proxmox 3) for redundancy and advanced firewall routing.
 
 ---
 
-## 🛠️ Tools & Resources
-- **Proxmox VE** — virtualization platform.  
-- **OpenVPN Connect** — client used for VPN testing.  
-- **TP-Link Tether (iOS)** — router management app.  
-- **AdGuard DNS** — secure DNS filtering over TLS.  
-- **ChatGPT (GPT-5.0)** — used for guided troubleshooting, documentation, and validation of commands.  
+## 🌐 Network Segmentation & VLAN Policy  
+
+| VLAN | Subnet | Purpose | Notes |
+|------|---------|----------|-------|
+| **1** | 192.168.0.0/24 | Core Infrastructure | Router, Proxmox, NAS, Controller, key services |
+| **3** | 192.168.30.0/24 | Stable “Untouched” Home Network | Partner and household devices — isolated from homelab VLANs |
+
+- VLAN 3 was intentionally designed as a **stability zone**, ensuring non-technical users remain unaffected by homelab experimentation.  
+- Inter-VLAN routing is controlled entirely via Omada’s internal policies.  
+- DHCP reservations and DNS management are now handled by the **Omada Controller**, replacing the BE6500’s built-in system.  
 
 ---
 
-## 📓 Lab Journal (Changelog)
+## ⚙️ Services & Transitions  
 
-- 2025-08-20 — Replaced router with TP-Link Archer BE6500, segmented SSIDs (SSID_NAME, SSID_MLO).  
-- 2025-08-21 — Reviewed DHCP ranges for static IP assignment.  
-- 2025-08-22 — Added TL-SG705 switch, moved devices for QoS improvements.  
-- 2025-08-24 — Flashed USB with Proxmox VE, repurposed Dell OptiPlex, wiped BitLocker partitions.  
-- 2025-08-25 — Installed Proxmox, set static IP, configured AdGuard DNS.  
-- 2025-08-25 — Installed Linux utilities (tree), relocated device to desk, began planning NAS and clustering.  
-- 2025-08-25 — Partitioned 14GB for lxc-storage (pve); determined insufficient for self-hosting apps (NAS planned).  
-- 2025-08-26 — Configured OpenVPN server on Archer BE6500. Generated certificate, set up TP-Link DDNS, exported client config, and confirmed remote VPN tunnel working.  
-- 2025-08-26 — Documented VPN screenshots and created dedicated vpn_setup/ folder with guides and links.  
-- 2025-08-26 — Reviewed Archer firewall/security (SPI, Access Control, IP/MAC binding, Device Isolation). Planned future IP/MAC binding for Proxmox/NAS.  
-- 2025-08-29 — ISP upgraded from Spectrum 500 Mbps to Frontier Fiber 1 Gbps symmetric. Enabled testing of VPN in full-tunnel mode and improved latency for Wi-Fi 7 segmentation.  
-- 2025-09-04 — Upgraded switch to TP-Link TL-SG1024DE Easy Smart Switch, replacing TL-SG705. Configured VLAN segmentation (Mgmt, Servers, Media, IoT, High-Perf Wi-Fi) and finalized logical network topology diagram for portfolio documentation.  
-- 2025-09-07 — Attempted virtualization of Ubuntu and Alpine Linux on Proxmox. Also tested NAS-backed install via UGREEN NAS. All failed initially.  
-- 2025-09-09 — Successfully created Ubuntu VM with 4GB RAM. Installed Java 1.21 and Minecraft Java Edition 1.21.8. Created `minecraft` user and configured server directory. Corrected static IP conflict and verified successful LAN and WAN access.  
-- 2025-09-10 — VLAN isolation worked locally but failed to route externally. Devices in VLANs could not access Internet. VLAN testing disabled until inter-VLAN routing solution is implemented.  
+| Service | Previous Host | Current Status | Transition Details |
+|----------|----------------|----------------|--------------------|
+| **Caddy Proxy** | NAS | **Active** | Still serving reverse proxy roles |
+| **OpenVPN** | BE6500 Router | **Migrated** | Now integrated on ER707-M2 using No-IP DDNS |
+| **Pi-hole** | Proxmox 1 VM | **Active** | Core DNS filter for all VLANs |
+| **AdGuard DNS** | External | **Supplementary** | Redundant DNS layer over TLS |
+| **Omada Controller** | Main PC → Proxmox 2 | **Migrated** | Now containerized and always-on |
+| **Docker Stack** | Proxmox 2 | **Active** | Manages all service containers via Portainer Agent |
+| **Jellyfin / Immich / qBittorrent** | NAS | **Active** | Media and file services running in Docker |
+| **Minecraft Server** | Proxmox 1 | **Active** | Still running; eventual retirement planned |
 
 ---
 
-## 🚧 Future Plans
+## 🛡️ Security Framework  
 
-- Enable **IP/MAC Binding** for critical hosts (Proxmox, NAS, main PC).  
-- Configure **manual port forwarding** (replace UPnP) for gaming services (PS5, Steam, Epic).  
-- Implement **VLAN segmentation** (Homelab / IoT / Personal).  
-- Migrate LAN subnet from **192.168.0.0/24 → 192.168.10.0/24** for cleaner addressing.  
-- Evaluate **pfSense/OPNsense** (dedicated or VM) for IDS/IPS and advanced firewall rules.  
-- Deploy **virtual honeypots** (via Proxmox or Azure) for traffic logging and analysis.  
-- Maintain Ubuntu VM running a Minecraft server for internal and external access.  
+BearLabs implements multiple layers of protection designed around practical enterprise security principles:
 
-These future steps will continue expanding the homelab’s capabilities, with a particular focus on security, segmentation, and practical documentation. The next logical phase is exploring a dedicated firewall solution that can bridge the gap between consumer-grade routers and enterprise-style security.  
+- **IDS/IPS:** Enabled in *IDS-only* mode on the Omada ER707-M2 to monitor for suspicious traffic without blocking legitimate flows.  
+- **Firewall:** Rule-based isolation between VLANs; inter-VLAN routing limited to administrative hosts only.  
+- **IP/MAC Binding:** Completed for static endpoints (NAS, Proxmox nodes, main workstation).  
+- **DNS Filtering:** Pi-hole (local) + AdGuard DNS (TLS) stack for redundant security.  
+- **VPN:** OpenVPN integrated via Omada router, secured with updated No-IP domain for reliable external access.  
+- **Port Forwarding:** Configured only for essential applications (Caddy proxy and qBittorrent).  
 
 ---
 
-## 📂 Repository Structure
+## 📊 Logical Network Topology  
+
+![BearLabs 2025 Logical Diagram](images/BearLab-LD.png)  
+> **Figure 1.** BearLabs 2025 Logical Network Topology — Omada + Proxmox Hybrid Infrastructure  
+
+This diagram reflects the hierarchical architecture of BearLabs, showing VLAN segmentation, traffic routing paths, and virtualization layers managed under the Omada ecosystem.
+
+---
+
+## 🧾 Operational Journal (Full Changelog)  
+
+### **Foundational Phase (August 2025)**
+- Replaced Spectrum ISP with **Frontier Fiber 1 Gbps symmetric** connection.  
+- Installed **TP-Link Archer BE6500** as core router.  
+- Segmented Wi-Fi into dual SSIDs:  
+  - *SSID_MLO* (WPA3-only, high-performance devices).  
+  - *SSID_NAME* (WPA2/WPA3 mixed mode for IoT and legacy).  
+- Introduced **AdGuard DNS over TLS**, disabled WPS, remote management, and EasyMesh.  
+- Deployed **TL-SG705 unmanaged switch** for initial Ethernet distribution.  
+- Configured **OpenVPN Server** on BE6500; validated full-tunnel connection via TP-Link DDNS.  
+- Installed **Proxmox VE 9.0** on a Dell OptiPlex 7020 Micro; wiped BitLocker partitions.  
+- Created **lxc-storage (pve)** partition (14GB), later deemed insufficient for self-hosting.  
+- Verified static IP configuration, AdGuard DNS, and gateway routing via Linux CLI.  
+
+### **Growth Phase (September 2025)**  
+- **Upgraded switch** to TL-SG1024DE Easy Smart Switch for VLAN support.  
+- Began VLAN design (10–50) separating management, servers, media, IoT, and high-performance Wi-Fi.  
+- Initial VLAN testing revealed **inter-VLAN routing limitations** on BE6500; VLANs disabled temporarily.  
+- Successfully deployed **Ubuntu Server VM** on Proxmox with optimized 4GB RAM allocation.  
+- Installed Java 1.21 and **Minecraft Java Edition 1.21.8** — confirmed LAN/WAN functionality via DDNS.  
+- **Introduced NAS (UGREEN 4-bay)** with dual Seagate IronWolf 4TB drives; configured Docker workloads.  
+- Migrated **Jellyfin, Immich, Portainer, and qBittorrent** to NAS; enabled persistent volume mounts.  
+- **Segmented networks** into Bear1 (2.4GHz) and Bear2 (5/6GHz) Wi-Fi networks; fine-tuned QoS via switch.  
+- Began **VPN documentation and screenshot repository** under `/vpn_setup/`.  
+
+### **Infrastructure Modernization (Late September → October 2025)**  
+- Retired **Archer BE6500**, deployed **TP-Link Omada ER707-M2** as the new core router/firewall.  
+- Installed **Omada Controller** as a containerized service on Proxmox 2 for 24/7 management.  
+- Created **VLAN 3 (192.168.30.0/24)** as a “home stability” subnet to isolate non-lab devices.  
+- Migrated DHCP and reservation control from BE6500 to Omada Controller.  
+- Integrated **Omada EAP720 Wi-Fi 7 AP**; enabled VLAN-based SSID segmentation.  
+- Updated DNS hierarchy to Pi-hole (local) → AdGuard (TLS) → Frontier Fiber upstream.  
+- Replaced TP-Link DDNS with **custom No-IP dynamic domain** for VPN resilience.  
+- Configured **OpenVPN** on ER707-M2, tied to No-IP hostname, tested external reconnections.  
+- Activated **IDS/IPS** on ER707-M2 in *IDS-only* mode to monitor without disrupting traffic.  
+- Completed **IP/MAC binding** for static endpoints (Proxmox, NAS, main PC).  
+- Configured **port forwarding** for Caddy and qBittorrent, verified via Omada logs.  
+- Transitioned **Minecraft server** to maintenance mode; future decommission planned.  
+
+---
+
+## 💼 Professional Summary  
+
+BearLabs demonstrates applied expertise across multiple infrastructure domains:  
+
+- **Advanced Network Design:** VLANs, inter-VLAN routing, and Omada-based DHCP/DNS management.  
+- **Virtualization & Orchestration:** Proxmox hypervisors, Docker containerization, and Portainer centralized control.  
+- **Cybersecurity Implementation:** IDS/IPS monitoring, VPN tunneling, IP/MAC binding, DNS filtering.  
+- **Documentation & Versioning Discipline:** GitHub-based documentation, change tracking, and visual topology references.  
+
+This homelab reflects an enterprise mindset — prioritizing segmentation, observability, and resilience — implemented through cost-efficient hardware and scalable open-source software.
+
+---
+
+## 🚀 Future Roadmap  
+
+- Deploy **OPNsense** firewall VM on Proxmox 1 for deep packet inspection and advanced traffic analytics.  
+- Expand to **Proxmox 3** node for redundancy and service migration testing.  
+- Implement **Omada VPN with IDS correlation** for unified monitoring.  
+- Introduce **Grafana + Prometheus** stack for network and service telemetry visualization.  
+
+---
+
+## 🧩 Repository Structure  
 
 ```plaintext
-├── VPN_setup/
-│   ├── tplink_VPN_setup.md
+├── vpn_setup/
+│   ├── omada_openvpn_setup.md
 │   ├── vpn_links.md
 │
-├── proxmox_install_setup/
-│   ├── proxmox_install_setup_guide.md
-│   ├── proxmox_links.md
-│   ├── identify_dhcp_gateway.md
-│   ├── proxmox_lxc_storage_setup.md
+├── proxmox_virtualization/
+│   ├── proxmox_install_guide.md
+│   ├── proxmox_service_map.md
 │
 ├── router_security.md
 │
 ├── images/
-│   ├── vpn/
+│   ├── BearLab-LD.png
 │   ├── proxmox/
-│   ├── router/
-│   ├── homelab_topology.png
+│   ├── vpn/
 │
 └── README.md
 └── LICENSE
-```
-
----
-
-## ⚡ Summary
-
-This homelab demonstrates practical networking, virtualization, and security skills using consumer hardware with enterprise concepts.  
-It is intended as a **hands-on guide and learning resource** for anyone exploring homelab networking. The repository combines real-world examples, lessons learned, and alternative approaches to help others adapt these ideas to their own environments.  
-
-This guide showcases:  
-- Network segmentation strategies (SSID planning, VLAN design).  
-- VPN deployment and troubleshooting with OpenVPN.  
-- Virtualization using Proxmox VE on repurposed hardware.  
-- Security hardening methods applied to consumer-grade routers.  
-- Step-by-step documentation, including mistakes and fixes, to make learning approachable.  
-- Notes on future expansion paths (dedicated firewall appliances, VLAN-capable access points, etc.), showing how advanced and user-friendly products can both fit into a homelab journey.  
-
----
-
-## 🌱 Closing Note & Next Steps
-
-This repository now represents the **completed barebones structure** of the homelab network. It’s meant to serve as a starting point — simple enough for newcomers to replicate, while still showing how consumer-grade equipment can be pushed toward enterprise-style concepts.
-
-Rather than overloading this repository with every advanced configuration, future projects will be broken out into their own dedicated repositories. This way, each topic remains focused, approachable, and easier to follow step by step.  
-
-Upcoming repositories will include:  
-- **Starting Your First Ubuntu Server VM on Proxmox**  
-- **Installing and Configuring Pi-hole for DNS Filtering**  
-- **Creating and Exposing a Honeypot on Azure for Cybersecurity Testing**  
-
-By keeping the homelab foundation lightweight here, and branching into more advanced topics separately, the overall goal remains the same:  
-**to share lessons learned, highlight both enterprise-grade and user-friendly approaches, and inspire others to keep experimenting — even when it gets frustrating.**
-
----
-
