@@ -18,7 +18,7 @@ This project also assumes familiarity with common networking acronyms and jargon
 
 ## 📊 Logical Network Topology
 
-![Homelab Network Topology](images/BearLab-LD)
+![Homelab Network Topology](images/BearLab-LD.png)
 
 The diagram above represents the logical design of the homelab, including VLAN groupings, firewall placement, and switch segmentation.  
 
